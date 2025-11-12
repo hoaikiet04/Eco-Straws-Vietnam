@@ -38,7 +38,7 @@ main section {
   display: inline-block;
 }
 .hero {
-  background-image: url("../images/banner_1.jpg");
+  /* background-image: url("../images/banner_1.jpg"); */
   background-size: cover;
   background-position: center;
   position: relative;
