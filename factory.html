@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="vi" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eco Straws Vietnam – Giao diện mẫu (Bootstrap)</title>
+  <meta name="description" content="Giao diện mẫu tái dựng cấu trúc trang Eco Straws Vietnam bằng Bootstrap 5 và jQuery. Không chứa nội dung/hình ảnh sở hữu trí tuệ, chỉ dùng văn bản & ảnh mẫu.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<a class="visually-hidden-focusable" href="#main">Bỏ qua nội dung điều hướng</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top py-2" id="mainNavbar">
+  <div class="container">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+      <span class="brand-mark me-2" aria-hidden="true"></span>
+      Eco Straws Vietnam
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-controls="offcanvasNav" aria-label="Mở menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNav" aria-labelledby="offcanvasNavLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Đóng"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Sản phẩm</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Về chúng tôi</a></li>
+          <li class="nav-item"><a class="nav-link" href="factory.html">Nhà máy</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<main id="main" class="pt-5">
+
+<header class="bg-light py-5">
+  <div class="container">
+    <h1 class="h2 mb-1">Nhà máy</h1>
+    <p class="text-secondary mb-0">Giới thiệu năng lực sản xuất, quy trình và chứng nhận.</p>
+  </div>
+</header>
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <h2 class="h4">Năng lực sản xuất</h2>
+        <p>Trình bày công suất, tiêu chuẩn quản lý chất lượng và an toàn thực phẩm của nhà máy bạn (ví dụ: ISO, HACCP...).</p>
+        <ul>
+          <li>Thiết kế dây chuyền đạt chuẩn vệ sinh.</li>
+          <li>Kiểm soát chất lượng lô/line minh bạch.</li>
+          <li>Ưu tiên tiết kiệm năng lượng & tái chế.</li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm bg-pattern"></div>
+        <p class="small text-secondary mt-2 mb-0">*Thay ảnh nhà máy/thực tế sản xuất.</p>
+      </div>
+    </div>
+    <div class="row g-4 mt-1">
+      <div class="col-12">
+        <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm">
+          <iframe class="border-0" src="https://maps.google.com/maps?q=Hanoi,%20Vietnam&t=&z=11&ie=UTF8&iwloc=&output=embed" title="Bản đồ (mẫu)"></iframe>
+        </div>
+        <p class="small text-secondary mt-2 mb-0">*Cập nhật địa chỉ, toạ độ bản đồ chính xác của bạn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="border-top mt-5">
+  <div class="container py-4">
+    <div class="row g-3 align-items-center">
+      <div class="col-md-6">
+        <div class="d-flex align-items-center">
+          <span class="brand-mark me-2" aria-hidden="true"></span>
+          <strong>Eco Straws Vietnam</strong> · Giao diện mẫu
+        </div>
+        <p class="text-secondary mb-0 small">Mẫu mã nguồn mở. Hãy thay nội dung, ảnh và thông tin liên hệ của bạn.</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <a class="me-3 text-decoration-none" href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a class="me-3 text-decoration-none" href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a class="text-decoration-none" href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

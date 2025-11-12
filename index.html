@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="vi" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eco Straws Vietnam – Giao diện mẫu (Bootstrap)</title>
+    <meta
+      name="description"
+      content="Giao diện mẫu tái dựng cấu trúc trang Eco Straws Vietnam bằng Bootstrap 5 và jQuery. Không chứa nội dung/hình ảnh sở hữu trí tuệ, chỉ dùng văn bản & ảnh mẫu."
+    />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <a class="visually-hidden-focusable" href="#main"
+      >Bỏ qua nội dung điều hướng</a
+    >
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top py-2"
+      id="mainNavbar"
+    >
+      <div class="container">
+        <a
+          class="navbar-brand fw-bold d-flex align-items-center"
+          href="index.html"
+        >
+          <span class="brand-mark me-2" aria-hidden="true"></span>
+          Eco Straws Vietnam
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNav"
+          aria-controls="offcanvasNav"
+          aria-label="Mở menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasNav"
+          aria-labelledby="offcanvasNavLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavLabel">Menu</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Đóng"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Trang chủ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="products.html">Sản phẩm</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">Về chúng tôi</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Liên hệ</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main id="main" class="pt-5">
+      <!-- HERO -->
+      <section class="hero position-relative overflow-hidden">
+        <div class="container position-relative py-5">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <h1 class="display-5 fw-bold mb-3">
+                Giải pháp ống hút & sản phẩm
+                <span class="text-gradient">thân thiện môi trường</span>
+              </h1>
+              <p class="lead text-secondary">
+                Giao diện mẫu linh hoạt cho doanh nghiệp xanh: ống hút gạo, ống
+                hút giấy, dụng cụ ăn uống sinh học và hơn thế nữa.
+              </p>
+              <div class="d-flex gap-3 mt-3">
+                <a href="products.html" class="btn btn-success btn-lg"
+                  ><i class="bi bi-bag me-1"></i> Xem sản phẩm</a
+                >
+                <a href="contact.html" class="btn btn-outline-success btn-lg"
+                  ><i class="bi bi-envelope me-1"></i> Nhận báo giá</a
+                >
+              </div>
+            </div>
+            <div class="col-lg-6 mt-5 mt-lg-0">
+              <div class="hero-card shadow-lg rounded-4 p-4 bg-white">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="bi bi-leaf display-6 me-2"></i>
+                  <h2 class="h4 mb-0">Cam kết Xanh</h2>
+                </div>
+                <ul class="list-unstyled mb-0">
+                  <li class="d-flex align-items-start mb-2">
+                    <i class="bi bi-check2-circle me-2 text-success"></i
+                    ><span
+                      >Thay thế nhựa dùng một lần bằng nguyên liệu tự
+                      nhiên.</span
+                    >
+                  </li>
+                  <li class="d-flex align-items-start mb-2">
+                    <i class="bi bi-check2-circle me-2 text-success"></i
+                    ><span
+                      >Thiết kế tối ưu cho hiệu năng và trải nghiệm uống.</span
+                    >
+                  </li>
+                  <li class="d-flex align-items-start">
+                    <i class="bi bi-check2-circle me-2 text-success"></i
+                    ><span
+                      >Dễ tích hợp cho website đa ngôn ngữ và đa trang.</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <svg
+          class="hero-wave"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M0,224L60,224C120,224,240,224,360,197.3C480,171,600,117,720,133.3C840,149,960,235,1080,240C1200,245,1320,171,1380,133.3L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+          ></path>
+        </svg>
+      </section>
+
+      <!-- FEATURES -->
+      <section class="py-5 bg-light my-5">
+        <div class="container">
+          <div class="row text-center g-4">
+            <div class="col-6 col-lg-3">
+              <div class="feature">
+                <i class="bi bi-globe-americas display-6"></i>
+                <h3 class="h6 mt-2">100% Natural</h3>
+                <p class="small text-secondary">
+                  Made entirely from natural ingredients
+                </p>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3">
+              <div class="feature">
+                <i class="bi bi-shield-check display-6"></i>
+                <h3 class="h6 mt-2">Eco-friendly</h3>
+                <p class="small text-secondary">
+                  Safe for you, kind to the planet
+                </p>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3">
+              <div class="feature">
+                <i class="bi bi-recycle display-6"></i>
+                <h3 class="h6 mt-2">Renewable Energy</h3>
+                <p class="small text-secondary">
+                  Sustainably produced using green energy
+                </p>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3">
+              <div class="feature">
+                <i class="bi bi-brightness-alt-high-fill display-6"></i>
+                <h3 class="h6 mt-2">Plastic-free Future</h3>
+                <p class="small text-secondary">
+                  Reducing plastic waste, protecting nature
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCTS PREVIEW -->
+      <section class="py-5 mt-5" id="products">
+        <div class="container">
+          <h2 class="text-center mb-5">Our Products</h2>
+          <div
+            class="d-flex justify-content-end align-items-end flex-wrap gap-2 mb-3"
+          >
+            <div class="btn-group" role="group" aria-label="Lọc sản phẩm">
+              <button
+                class="btn btn-outline-success btn-sm filter-btn active"
+                data-filter="*"
+              >
+                Tất cả
+              </button>
+              <button
+                class="btn btn-outline-success btn-sm filter-btn"
+                data-filter="rice"
+              >
+                Nutritional Noodles
+              </button>
+              <button
+                class="btn btn-outline-success btn-sm filter-btn"
+                data-filter="paper"
+              >
+                Rice straws
+              </button>
+              <button
+                class="btn btn-outline-success btn-sm filter-btn"
+                data-filter="tableware"
+              >
+                Stirring bar
+              </button>
+            </div>
+          </div>
+
+          <div class="row g-4 product-grid mt-5">
+            <div class="row products-row mt-5">
+              <!-- Rainbow Noodles -->
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="product-card">
+                  <figure class="product-figure">
+                    <img
+                      class="product-img"
+                      src="assets/images/products/mi-cau-vong-Thumbnail-web.png"
+                      alt="Rainbow Noodles"
+                    />
+                  </figure>
+                  <div class="card-body">
+                    <h5 class="product-title pt-2">Rainbow Noodles</h5>
+                    <div class="price-old">65.000 đ</div>
+                    <div class="price-new mb-2">45.000 đ</div>
+                    <a href="#" class="btn btn-pill">See now</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Corn Noodles -->
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="product-card">
+                  <figure class="product-figure">
+                    <img
+                      class="product-img"
+                      src="assets/images/products/Mi-cau-vong-Thumbnail-web.png"
+                      alt="Corn Noodles"
+                    />
+                  </figure>
+                  <div class="card-body">
+                    <h5 class="product-title">Corn Noodles</h5>
+                    <div class="price-old">65.000 đ</div>
+                    <div class="price-new mb-2">50.000 đ</div>
+                    <a href="#" class="btn btn-pill">See now</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sugar Free Noodles -->
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="product-card">
+                  <figure class="product-figure">
+                    <img
+                      class="product-img"
+                      src="assets/images/products/Mi-ngo-Thumbnail-web.png"
+                      alt="Sugar Free Noodles"
+                    />
+                  </figure>
+                  <div class="card-body">
+                    <h5 class="product-title">Sugar Free Noodles</h5>
+                    <div class="price-old">80.000 đ</div>
+                    <div class="price-new mb-2">65.000 đ</div>
+                    <a href="#" class="btn btn-pill">See now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESS -->
+      <section class="process-section" id="process">
+        <div class="container">
+          <h2 class="title text-center mt-3">Production Process</h2>
+          <p class="subtitle text-center">Quy trình sản xuất ống hút gạo</p>
+
+          <div class="timeline">
+            <div class="row row-cols-1 row-cols-lg-5 g-5 align-items-center">
+              <!-- 1 -->
+              <div class="col">
+                <div class="step">
+                  <div class="circle-wrap">
+                    <div class="circle">
+                      <i class="bi bi-bag-check bi-process"></i>
+                    </div>
+                  </div>
+                  <div class="mt-2 label">Nguyên liệu</div>
+                  <div class="sublabel">Bột gạo, năng, phụ liệu màu</div>
+                </div>
+              </div>
+              <!-- 2 -->
+              <div class="col">
+                <div class="step">
+                  <div class="circle-wrap">
+                    <div class="circle">
+                      <i class="bi bi-droplet-half bi-process"></i>
+                    </div>
+                  </div>
+                  <div class="mt-2 label">Trộn bột</div>
+                  <div class="sublabel">Tỷ lệ hao hụt ~2%</div>
+                </div>
+              </div>
+              <!-- 3 -->
+              <div class="col">
+                <div class="step">
+                  <div class="circle-wrap">
+                    <div class="circle">
+                      <i class="bi bi-diagram-3 bi-process"></i>
+                    </div>
+                  </div>
+                  <div class="mt-2 label">Ép đùn</div>
+                  <div class="sublabel">Tạo hình ống hút. 80–90°C</div>
+                </div>
+              </div>
+              <!-- 4 -->
+              <div class="col">
+                <div class="step">
+                  <div class="circle-wrap">
+                    <div class="circle">
+                      <i class="bi bi-thermometer-half bi-process"></i>
+                    </div>
+                  </div>
+                  <div class="mt-2 label">Cắt & sấy</div>
+                  <div class="sublabel">Sấy lạnh. Hao hụt ~3%</div>
+                </div>
+              </div>
+              <!-- 5 -->
+              <div class="col">
+                <div class="step">
+                  <div class="circle-wrap">
+                    <div class="circle">
+                      <i class="bi bi-box-seam bi-process"></i>
+                    </div>
+                  </div>
+                  <div class="mt-2 label">Đóng gói</div>
+                  <div class="sublabel">Hút chân không – xuất kho</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-center text-muted mt-4"></p>
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS – marquee rightward -->
+      <section class="py-5 my-5 bg-light">
+        <div class="container">
+          <h2 class="h5 mb-3 text-center">
+            Certifications & Inspection Partners
+          </h2>
+
+          <div class="marquee marquee--3 mx-auto">
+            <div class="marquee__track">
+              <!-- Thêm class rotate-90 nếu file ảnh đang nằm dọc và cần xoay ngang -->
+              <img src="assets/images/certs/logo1.jpg" alt="ISO 22000:2018" />
+              <img src="assets/images/certs/logo2.jpg" alt="FSPCA" />
+              <img src="assets/images/certs/logo3.jpg" alt="Eurofins" />
+
+              <!-- Lặp lại 1 lần để cuộn vô hạn mượt -->
+              <img
+                src="assets/images/certs/logo1.jpg"
+                alt=""
+                aria-hidden="true"
+              />
+              <img
+                src="assets/images/certs/logo2.jpg"
+                alt=""
+                aria-hidden="true"
+              />
+              <img
+                src="assets/images/certs/logo3.jpg"
+                alt=""
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REGISTER / CONTACT FORM -->
+      <section id="lead" class="py-5 my-5">
+        <div class="container">
+          <div class="row g-4 align-items-center lead-wrap position-relative">
+            <!-- LEFT: FORM PANEL -->
+            <div class="col-lg-6">
+              <div class="lead-panel p-4 p-md-5">
+                <h2 class="display-6 fw-bold mb-4">REGISTRATION FORM</h2>
+
+                <form novalidate>
+                  <div class="mb-3">
+                    <input
+                      class="form-control form-lg"
+                      type="text"
+                      placeholder="Full name"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      class="form-control form-lg"
+                      type="text"
+                      placeholder="Business"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      class="form-control form-lg"
+                      type="tel"
+                      placeholder="Phone number"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      class="form-control form-lg"
+                      type="email"
+                      placeholder="Email"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <textarea
+                      class="form-control form-lg"
+                      rows="4"
+                      placeholder="Message"
+                    ></textarea>
+                  </div>
+
+                  <div class="lead-connector" aria-hidden="true"></div>
+                  <div class="text-center">
+                    <button class="btn btn-eco-pill" type="submit">
+                      CONTACT NOW TO RECEIVE A SAMPLE
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- RIGHT: PHOTO -->
+            <div class="col-lg-6">
+              <div class="lead-photo">
+                <img
+                  src="assets/images/banner_4.jpg"
+                  class="img-fluid"
+                  alt="Factory"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ECO INFO (3x2, fit one view) -->
+      <section class="eco-mini py-5 my-5">
+        <div class="container h-100 d-flex flex-column">
+          <h2 class="h3 text-center fw-bold mb-3">
+            MỘT SỐ HOẠT ĐỘNG CỦA CHÚNG TÔI
+          </h2>
+
+          <div class="row g-3 g-lg-4 eco-mini-grid mt-auto mb-auto">
+            <!-- Item 1 -->
+            <div class="col-6 col-lg-4">
+              <article class="eco-mini-card h-100">
+                <figure class="ratio ratio-4x3 eco-mini-figure">
+                  <img
+                    src="assets/images/banner_4.jpg"
+                    class="eco-mini-img"
+                    alt=""
+                  />
+                </figure>
+                <div class="eco-mini-body">
+                  <h3 class="eco-mini-title">Nutritious meals for families</h3>
+                </div>
+              </article>
+            </div>
+            <!-- Item 2 -->
+            <div class="col-6 col-lg-4">
+              <article class="eco-mini-card h-100">
+                <figure class="ratio ratio-4x3 eco-mini-figure">
+                  <img
+                    src="assets/images/banner_1.jpg"
+                    class="eco-mini-img"
+                    alt=""
+                  />
+                </figure>
+                <div class="eco-mini-body">
+                  <h3 class="eco-mini-title">Reduce plastic waste</h3>
+                </div>
+              </article>
+            </div>
+            <!-- Item 3 -->
+            <div class="col-6 col-lg-4">
+              <article class="eco-mini-card h-100">
+                <figure class="ratio ratio-4x3 eco-mini-figure">
+                  <img
+                    src="assets/images/banner_2.jpg"
+                    class="eco-mini-img"
+                    alt=""
+                  />
+                </figure>
+                <div class="eco-mini-body">
+                  <h3 class="eco-mini-title">Community & environment</h3>
+                </div>
+              </article>
+            </div>
+            <!-- Item 4 -->
+            <div class="col-6 col-lg-4">
+              <article class="eco-mini-card h-100">
+                <figure class="ratio ratio-4x3 eco-mini-figure">
+                  <img
+                    src="assets/images/banner_2.jpg"
+                    class="eco-mini-img"
+                    alt=""
+                  />
+                </figure>
+                <div class="eco-mini-body">
+                  <h3 class="eco-mini-title">Healthy lifestyle</h3>
+                </div>
+              </article>
+            </div>
+            <!-- Item 5 -->
+            <div class="col-6 col-lg-4">
+              <article class="eco-mini-card h-100">
+                <figure class="ratio ratio-4x3 eco-mini-figure">
+                  <img
+                    src="assets/images/banner_3.jpg"
+                    class="eco-mini-img"
+                    alt=""
+                  />
+                </figure>
+                <div class="eco-mini-body">
+                  <h3 class="eco-mini-title">Circular practices</h3>
+                </div>
+              </article>
+            </div>
+            <!-- Item 6 -->
+            <div class="col-6 col-lg-4">
+              <article class="eco-mini-card h-100">
+                <figure class="ratio ratio-4x3 eco-mini-figure">
+                  <img
+                    src="assets/images/banner_1.jpg"
+                    class="eco-mini-img"
+                    alt=""
+                  />
+                </figure>
+                <div class="eco-mini-body">
+                  <h3 class="eco-mini-title">Green energy</h3>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- ===== FOOTER ===== -->
+    <footer class="eco-footer text-white">
+      <!-- Signup bar -->
+      <div class="container position-relative">
+        <div class="footer-callout ec-callout rounded-4">
+          <h3 class="h3 fw-bold text-uppercase text-center mb-3 mb-md-4">
+            Contact international and domestic business departments
+          </h3>
+
+          <!-- Ô trắng hiển thị hotline -->
+          <div class="hotline-pill">
+            <span class="label">Hotline / Whatsapp / Zalo</span>
+            <span class="number">+84913924933</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="eco-footer__body">
+        <div class="container">
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <h6 class="fw-bold text-uppercase mb-2">
+                Eco Straws Vietnam Export Joint Stock Company
+              </h6>
+              <ul class="list-unstyled text-white-75 mb-0">
+                <li>
+                  <strong>Office:</strong> DBS Building, 4th floor, Lot 31, Ha
+                  Tri Service and Trade Area, Ha Cau Ward, Ha Dong, Hanoi,
+                  Vietnam.
+                </li>
+                <li>
+                  <strong>Factory address:</strong> Lot CN02, industrial
+                  cluster, Hai Phuong commune, Hai Hau district, Nam Dinh
+                  province.
+                </li>
+              </ul>
+
+              <div class="mt-3">
+                <span class="me-2">Follow us:</span>
+                <a class="eco-social" href="#"
+                  ><i class="bi bi-facebook"></i
+                ></a>
+                <a class="eco-social" href="#"><i class="bi bi-youtube"></i></a>
+                <a class="eco-social" href="#"><i class="bi bi-tiktok"></i></a>
+                <a class="eco-social" href="#"
+                  ><i class="bi bi-instagram"></i
+                ></a>
+                <a class="eco-social" href="#"
+                  ><i class="bi bi-whatsapp"></i
+                ></a>
+              </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+              <h6 class="fw-bold text-uppercase mb-2">Contact</h6>
+              <ul class="list-unstyled text-white-75 mb-0">
+                <li class="mb-1">
+                  <i class="bi bi-telephone me-2"></i> +84913924933
+                </li>
+                <li>
+                  <i class="bi bi-envelope me-2"></i> info@ecostrawsvietnam.vn
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+              <h6 class="fw-bold text-uppercase mb-2">About Eco Straws</h6>
+              <ul class="list-unstyled text-white-75 mb-0">
+                <li>Who are we</li>
+                <li>Office and Factory</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>

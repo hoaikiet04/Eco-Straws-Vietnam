@@ -1,0 +1,1283 @@
+:root {
+  --brand: #198754;
+  --brand-dark: #146c43;
+  --brand-25: #e6f4ec;
+  --eco: #6fc15f; /* xanh chủ đạo */
+  --eco-dark: #53a948;
+  --text: #212529;
+
+  --brand-3: #2f6b2f; /* xanh đậm */
+  --brand-2: #6ea76e; /* xanh trung gian */
+  --rail: #dfe7df; /* màu đường nối nhạt */
+  --section-y: 64px; /* khoảng cách mặc định (mobile/tablet) */
+  --section-y-lg: 88px;
+}
+/* ================ COMMON =============== */
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji;
+}
+main section {
+  padding-block: var(--section-y);
+}
+@media (min-width: 992px) {
+  main section {
+    padding-block: var(--section-y-lg);
+  }
+}
+
+.navbar.scrolled {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.075) !important;
+  backdrop-filter: saturate(1.3) blur(8px);
+}
+.brand-mark {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  border-radius: 0.35rem;
+  background: linear-gradient(135deg, var(--brand) 0%, #2dd07b 100%);
+  display: inline-block;
+}
+.hero {
+  background-image: url("../images/banner_1.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+  padding-block: 6rem 0;
+}
+.text-gradient {
+  background: linear-gradient(90deg, var(--brand) 0%, #2dd07b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-wave {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  inline-size: 100%;
+  block-size: 80px;
+  color: #f8faf9;
+}
+.hero-wave path {
+  fill: currentColor;
+}
+.bg-pattern {
+  background-image: linear-gradient(
+      45deg,
+      rgba(25, 135, 84, 0.12) 25%,
+      transparent 25%
+    ),
+    linear-gradient(-45deg, rgba(25, 135, 84, 0.12) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(25, 135, 84, 0.12) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(25, 135, 84, 0.12) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  background-color: #fff;
+}
+.feature i {
+  color: var(--brand);
+}
+.timeline {
+  list-style: none;
+  padding-left: 0;
+}
+.timeline li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 0.5rem;
+  inline-size: 0.5rem;
+  block-size: 0.5rem;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 4px var(--brand-25);
+}
+.cert-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  block-size: 100px;
+  border: 1px dashed rgba(0, 0, 0, 0.15);
+  border-radius: 0.75rem;
+  background: #fff;
+  font-weight: 700;
+  color: var(--brand-dark);
+}
+.card .ratio {
+  background-color: #fff;
+}
+footer {
+  background: #fff;
+}
+
+/* ====== PRODUCT CARDS – like sample ====== */
+.product-card {
+  border: 0;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: visible; /* allow image to overflow */
+  padding-top: 100px; /* space for floating image */
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Image block floating above card */
+.product-figure {
+  position: absolute;
+  left: 50%;
+  top: -90px; /* image goes above */
+  transform: translateX(-50%);
+  width: 200px; /* tune with your images */
+  height: auto;
+  display: grid;
+  place-items: end center;
+  pointer-events: none;
+}
+.product-img {
+  max-width: 80%;
+  max-height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.14));
+  transition: transform 0.25s ease;
+}
+.product-card:hover .product-img {
+  transform: translateY(-3px) scale(1.06);
+}
+
+/* Typography & price */
+.product-title {
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+}
+.price-old {
+  color: #9aa1a7;
+  font-size: 0.95rem;
+  text-decoration: line-through;
+  margin-bottom: 0.15rem;
+}
+.price-new {
+  color: #d72222;
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+/* Green pill button */
+.btn-pill {
+  background: #69c167;
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.55rem 1.15rem;
+  font-weight: 700;
+  box-shadow: 0 10px 22px rgba(105, 193, 103, 0.35);
+}
+.btn-pill:hover {
+  background: #5ab156;
+}
+
+/* spacing between cards */
+.products-row {
+  row-gap: 2.2rem;
+  margin-top: 6rem;
+}
+
+.product-grid {
+  padding-top: 100px;
+}
+
+.card-body {
+  margin-top: 10rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Responsive adjust */
+@media (max-width: 575.98px) {
+  .product-card {
+    padding-top: 120px;
+  }
+  .product-figure {
+    width: 210px;
+    height: 230px;
+    top: -70px;
+  }
+}
+/* PROCESS */
+/* ===== Timeline ===== */
+.timeline {
+  position: relative;
+  max-width: 1100px;
+  margin: 40px auto 0;
+}
+
+/* horizontal rail */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 8px;
+  background: linear-gradient(90deg, var(--brand-2), var(--rail));
+  border-radius: 999px;
+}
+
+.step {
+  position: relative;
+  text-align: center;
+}
+
+/* connector dot to rail */
+.step::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: var(--brand-2);
+  border-radius: 50%;
+  top: calc(50% - 6px);
+  box-shadow: 0 0 0 6px #fff; /* viền trắng tách khỏi đường */
+}
+
+/* main circle */
+.circle {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 12px;
+  background: #fff;
+  border-radius: 50%;
+  border: 8px solid var(--brand-3);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+/* outer ring */
+.circle-wrap {
+  position: relative;
+  width: 180px;
+  margin: 0 auto;
+}
+.circle-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 6px solid var(--brand-2);
+  z-index: 0;
+}
+.circle {
+  position: relative;
+  z-index: 1;
+}
+
+.bi-process {
+  font-size: 52px;
+  color: var(--brand);
+}
+.label {
+  font-weight: 800;
+}
+.sublabel {
+  color: #5f6b5f;
+}
+
+/* mobile: vertical layout */
+@media (max-width: 991.98px) {
+  .timeline::before {
+    left: calc(50% - 4px);
+    right: auto;
+    width: 8px;
+    height: 100%;
+    top: 0;
+    transform: none;
+  }
+  .step {
+    text-align: center;
+    padding: 16px 0;
+  }
+  .step::before {
+    top: auto;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/*  CERTIFICATIONS */
+/* ===== Certifications Marquee (rightward) – 3 logo viewport ===== */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(8px, 2vw, 12px) 0;
+}
+
+.marquee--3 {
+  /* Kích thước logo theo CHIỀU RỘNG để tính đúng viewport 3 logo */
+  --logoW: clamp(170px, 22vw, 230px);
+  --gap: clamp(1.25rem, 4vw, 3rem);
+  width: calc(3 * var(--logoW) + 2 * var(--gap)); /* vừa khít 3 logo */
+  max-width: 100%;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0; /* bỏ viền/bóng */
+}
+
+.marquee__track {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap);
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee-right 10s linear infinite; /* nhanh */
+}
+
+.marquee--3 img {
+  width: var(--logoW);
+  height: auto;
+  display: block;
+
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+.marquee--3 img:hover {
+  filter: none;
+  transform: translateY(-1px);
+}
+
+/* Pause khi hover toàn dải */
+.marquee--3:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+/* Xoay ngang khi ảnh gốc đang dọc */
+.marquee--3 img.rotate-90 {
+  transform: rotate(90deg);
+  transform-origin: center;
+  width: auto; /* khi xoay, dùng chiều cao để kiểm soát kích thước */
+  height: var(--logoW);
+}
+.marquee--3 img.rotate-90:hover {
+  transform: rotate(90deg) translateY(-1px);
+}
+
+/* Keyframes: chạy từ trái sang phải (từ -50% → 0%) */
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+}
+
+/* Mobile: logo nhỏ lại một chút cho vừa màn hình */
+@media (max-width: 575.98px) {
+  .marquee--3 {
+    --logoW: clamp(140px, 36vw, 180px);
+  }
+}
+
+/* REGISTER / CONTACT FORM */
+/* khung tổng thể */
+#lead .lead-wrap {
+  min-height: 520px;
+}
+
+/* ===== PANEL VIỀN XANH + GÓC CONG ===== */
+.lead-panel {
+  position: relative;
+  background: #fff;
+  border: 2px solid #7bc043; /* màu xanh lá */
+  border-radius: 0 100px 0 100px; /* bo cong mềm mại */
+  padding-bottom: 4.75rem !important; /* chừa chỗ cho nút + đường nối */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+/* INPUT to hơn, bo mềm */
+.form-control.form-lg {
+  padding: 0.95rem 1rem;
+  font-size: 1.05rem;
+  border-radius: 0.7rem;
+}
+
+/* Nút pill */
+.btn-eco-pill {
+  position: relative;
+  z-index: 1;
+  background: var(--eco);
+  color: #fff;
+  padding: 0.95rem 1.25rem;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  box-shadow: 0 14px 28px rgba(111, 193, 95, 0.25);
+}
+.btn-eco-pill:hover {
+  background: var(--eco-dark);
+}
+
+/* ===== ẢNH BO 2 GÓC PHẢI ===== */
+.lead-photo {
+  border-radius: 100px 0 100px 0; /* bo cong mềm mại */
+  overflow: hidden;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
+}
+.lead-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 991.98px) {
+  #lead .lead-wrap {
+    min-height: unset;
+  }
+  .lead-panel::after {
+    right: -6px;
+    width: clamp(240px, 70vw, 380px);
+    height: clamp(120px, 32vw, 180px);
+    border-top-right-radius: 220px;
+  }
+  .lead-connector {
+    bottom: -34px;
+    height: 38px;
+  }
+  .lead-photo {
+    border-radius: 24px;
+    margin-top: 0.75rem;
+  }
+}
+
+/* ===== ECO INFO ===== */
+.eco-mini {
+  background: transparent;
+}
+
+/* card sizing tuned to fit 3x2 on ≥992px; will wrap 2x3/1x6 on tablet/mobile */
+.eco-mini-card {
+  --radius: 14px;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  height: 100%;
+}
+.eco-mini-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+}
+
+.eco-mini-figure {
+  background: #f6f7f8;
+}
+.eco-mini-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 25px 25px 0 0;
+}
+
+.eco-mini-body {
+  padding: 0.65rem 0.75rem 1rem;
+}
+.eco-mini-title {
+  font-size: 0.95rem; /* nhỏ gọn */
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* tighter gaps so 3x2 fits nicely */
+.eco-mini-grid {
+  row-gap: 0.9rem !important;
+}
+
+/* Desktop height control: make whole grid fit in 1 view neatly */
+@media (min-width: 992px) {
+  .eco-mini {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+  .eco-mini-card {
+    /* target total height ~ 280–300px depending on header/nav */
+    min-height: 270px;
+  }
+  .eco-mini-title {
+    font-size: 0.9rem;
+  }
+}
+
+/* Tablet/mobile: comfortable stacking */
+@media (max-width: 991.98px) {
+  .eco-mini {
+    height: auto;
+  }
+  .eco-mini-title {
+    font-size: 0.95rem;
+  }
+}
+
+/* Giảm khoảng cách do class py-5 / my-5 */
+.eco-mini.py-5 {
+  padding-top: 1.25rem !important;
+  padding-bottom: 1.25rem !important;
+}
+.eco-mini.my-5 {
+  margin-top: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+/* Ảnh thấp hơn: 58% ≈ 16:9 (mặc định 4:3 = 75%) */
+.eco-mini-figure.ratio {
+  --bs-aspect-ratio: 58%;
+}
+
+/* Card gọn hơn */
+.eco-mini-card {
+  --radius: 16px;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+.eco-mini-img {
+  border-radius: 16px 16px 0 0;
+}
+
+/* Nội dung và tiêu đề compact */
+.eco-mini-body {
+  padding: 0.5rem 0.6rem 0.75rem;
+}
+.eco-mini-title {
+  font-size: 0.9rem;
+  letter-spacing: 0.2px;
+}
+
+/* Khoảng cách giữa các item nhỏ hơn */
+.eco-mini-grid {
+  row-gap: 0.75rem !important;
+}
+
+/* Desktop: giảm chiều cao tối thiểu của thẻ */
+@media (min-width: 992px) {
+  .eco-mini-card {
+    min-height: 230px;
+  } /* trước đây ~270px */
+}
+/* ============ FOOTER ============ */
+:root {
+  --ec-callout-lift: 64px;
+} /* độ chênh lên của callout */
+
+.ec-footer {
+  position: relative;
+  color: #fff;
+  background: url("../images/banner_1.jpg") center/cover no-repeat fixed; /* đổi đường dẫn nếu cần */
+  overflow: visible;
+}
+.ec-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+.ec-footer > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Container chuẩn */
+.ec-container {
+  width: min(1200px, 92%);
+  margin-inline: auto;
+}
+
+/* Callout xanh chênh lên */
+.ec-footer-hero {
+  margin-top: calc(var(--ec-callout-lift) * -1);
+  padding-top: calc(24px + var(--ec-callout-lift));
+}
+.ec-callout {
+  background: #86c86b;
+  color: #fff;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+}
+.ec-callout h3 {
+  margin: 0 0 18px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.ec-callout-hotline {
+  background: #fff;
+  color: #7a8086;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px 22px;
+  border-radius: 10px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.ec-callout-number {
+  color: #60b05e; /* xanh đậm số điện thoại */
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* Thân footer */
+.ec-footer-body {
+  padding: 28px 0 12px;
+}
+.ec-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 40px 28px;
+}
+.ec-footer h5 {
+  margin: 0 0 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.ec-list {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0;
+}
+.ec-list li {
+  margin: 10px 0;
+}
+.ec-list a {
+  color: #fff;
+  text-decoration: none;
+}
+.ec-list a:hover {
+  text-decoration: underline;
+}
+
+/* Follow us */
+.ec-follow {
+  margin-top: 24px;
+}
+.ec-follow > span {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.ec-socials {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.ec-social {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.ec-social:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+.ec-fb {
+  background: #1877f2;
+}
+.ec-yt {
+  background: #ff0000;
+}
+.ec-tk {
+  background: #000;
+}
+.ec-wa {
+  background: #25d366;
+}
+
+/* đường kẻ và bản quyền */
+.ec-sep {
+  border-color: rgba(255, 255, 255, 0.35);
+  margin: 8px 0 0;
+}
+.ec-copy {
+  text-align: right;
+  padding: 10px 0 18px;
+  opacity: 0.95;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  :root {
+    --ec-callout-lift: 48px;
+  }
+  .ec-grid {
+    grid-template-columns: 1fr;
+  }
+  .ec-callout h3 {
+    font-size: clamp(18px, 3.8vw, 28px);
+  }
+  .ec-callout-hotline {
+    font-size: clamp(16px, 3.6vw, 22px);
+  }
+}
+@media (max-width: 575.98px) {
+  :root {
+    --ec-callout-lift: 36px;
+  }
+}
+:root {
+  --ec-callout-lift: 56px;
+}
+
+/* Ít khoảng thở trên callout */
+.ec-footer-hero {
+  padding-top: 14px;
+}
+
+/* Callout gọn hơn */
+.ec-callout {
+  padding: 16px 18px 18px;
+  border-radius: 12px;
+}
+.ec-callout h3 {
+  margin-bottom: 12px;
+  font-size: clamp(18px, 3vw, 28px);
+}
+.ec-callout-hotline {
+  max-width: 520px;
+  padding: 12px 16px;
+  font-size: 20px;
+  border-radius: 8px;
+}
+
+/* Thân footer gọn hơn */
+.ec-footer-body {
+  padding: 18px 0 6px;
+}
+.ec-grid {
+  gap: 18px 16px;
+} /* giảm gap giữa 3 cột */
+.ec-list li {
+  margin: 6px 0;
+} /* giảm khoảng cách từng dòng */
+.ec-follow {
+  margin-top: 12px;
+} /* giảm khoảng cách "FOLLOW US" */
+.ec-social {
+  width: 38px;
+  height: 38px;
+  font-size: 18px;
+} /* icon nhỏ hơn */
+.ec-sep {
+  margin-top: 6px;
+} /* đường kẻ sát hơn */
+.ec-copy {
+  padding: 6px 0 10px;
+  font-size: 0.95rem;
+} /* dòng bản quyền thấp hơn */
+
+/* Nếu vẫn muốn ngắn hơn nữa trên laptop màn hình thấp: */
+@media (max-height: 800px) and (min-width: 992px) {
+  .ec-footer-hero {
+    padding-top: 10px;
+  }
+  .ec-callout {
+    padding: 14px 16px 16px;
+  }
+  .ec-callout-hotline {
+    font-size: 18px;
+    padding: 10px 14px;
+  }
+  .ec-footer-body {
+    padding: 14px 0 4px;
+  }
+}
+
+/* ABOUT */
+:root {
+  --eco: #7bc043;
+}
+
+/* ===== About card with concave circle cut-out ===== */
+.about-card {
+  position: relative;
+  background: #fff;
+  border: 2px solid var(--eco);
+  border-radius: 16px;
+  overflow: visible; /* để ảnh tròn lấn ra đẹp hơn */
+
+  /* tạo phần "khoét tròn" ở cạnh phải (concave) */
+  --hole: 260px; /* đường kính vùng khoét (desktop) */
+  --holeY: 48%; /* vị trí tâm theo trục dọc */
+  -webkit-mask: radial-gradient(
+        circle var(--hole) at 100% var(--holeY),
+        transparent 99%,
+        #000 101%
+      )
+      right center / var(--hole) var(--hole) no-repeat,
+    linear-gradient(#000, #000);
+  mask: radial-gradient(
+        circle var(--hole) at 100% var(--holeY),
+        transparent 99%,
+        #000 101%
+      )
+      right center / var(--hole) var(--hole) no-repeat,
+    linear-gradient(#000, #000);
+}
+/* vẽ đường viền cung tròn ở cạnh phải */
+.about-card::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: calc(var(--holeY) - var(--hole) / 2 - 2px);
+  width: var(--hole);
+  height: var(--hole);
+  border: 2px solid var(--eco);
+  border-left: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-radius: 999px;
+  clip-path: inset(
+    -2px 0 50% -2px
+  ); /* chỉ giữ nửa trên để giống ảnh (có thể bỏ nếu muốn cả vòng) */
+  pointer-events: none;
+}
+
+/* the round photo that fits in the hole */
+.about-photo {
+  position: absolute;
+  right: 0;
+  top: calc(var(--holeY) - var(--hole) / 2 + 6px); /* cân theo lỗ khoét */
+  width: calc(var(--hole) - 12px);
+  height: calc(var(--hole) - 12px);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 0;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Green badges under the card */
+.about-badge {
+  background: var(--eco);
+  border-radius: 6px;
+  padding: 0.9rem 1rem;
+}
+
+/* Responsive tuning */
+@media (max-width: 991.98px) {
+  .about-card {
+    --hole: 220px;
+    --holeY: 46%;
+  }
+}
+@media (max-width: 575.98px) {
+  .about-card {
+    --hole: 200px;
+    --holeY: 40%;
+  }
+  .about-photo {
+    position: static;
+    margin: 1rem auto 0;
+  }
+  .about-card {
+    -webkit-mask: none;
+    mask: none; /* trên mobile hiển thị đơn giản */
+  }
+  .about-card::after {
+    content: none;
+  }
+}
+
+/* vision */
+:root {
+  --eco: #7bc043;
+}
+
+/* Trục timeline giữa */
+.timeline {
+  position: relative;
+  padding: 0 0 2rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0.75rem;
+  width: 3px;
+  background: var(--eco);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+/* Dấu chấm trên trục ở mỗi item */
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.25rem;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--eco);
+  background: #fff;
+  border-radius: 50%;
+}
+
+/* Badge năm */
+.year-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  height: 56px;
+  padding: 0 0.5rem;
+  background: #fff;
+  color: #222;
+  border: 3px solid var(--eco);
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+/* Ảnh bo góc (hai góc đối xứng) */
+.timeline-figure {
+  border: 3px solid #e6f4e1;
+  overflow: hidden;
+}
+.timeline-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.timeline-figure.tr-bl {
+  border-radius: 28px 0 28px 0;
+} /* top-right & bottom-left */
+.timeline-figure.tl-br {
+  border-radius: 0 28px 0 28px;
+} /* top-left & bottom-right */
+
+/* Mũi tên ở cuối trục */
+.timeline-arrow {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-right: 3px solid var(--eco);
+  border-bottom: 3px solid var(--eco);
+  rotate: 45deg;
+}
+
+/* Responsive: mobile xếp dọc, trục lệch nhẹ */
+@media (max-width: 991.98px) {
+  .timeline::before {
+    left: 8px;
+    transform: none;
+  }
+  .timeline-item::before {
+    left: 8px;
+  }
+  .timeline-item .col-md-6:first-child {
+    margin-left: 22px;
+  }
+  .timeline .year-badge {
+    min-width: 48px;
+    height: 48px;
+    font-size: 0.95rem;
+  }
+}
+
+:root {
+  --eco: #7bc043;
+}
+
+/* script-like title */
+.vmv-script {
+  font-family: "Segoe Script", "Brush Script MT", cursive;
+  font-weight: 700;
+}
+
+/* max width for paragraphs under Vision/Mission */
+.vmv-max {
+  max-width: 680px;
+}
+
+/* small circular icon above headings */
+.vmv-icon {
+  inline-size: 42px;
+  block-size: 42px;
+  border: 2px solid var(--eco);
+  color: var(--eco);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1rem;
+}
+
+/* core value cards */
+.value-card {
+  padding: 1rem 0.75rem 1.1rem;
+}
+.value-ico {
+  inline-size: 56px;
+  block-size: 56px;
+  margin-inline: auto;
+  margin-bottom: 0.5rem;
+  border: 2px solid var(--eco);
+  color: var(--eco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  font-size: 1.4rem;
+}
+.value-card h5 {
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+}
+.value-card p {
+  line-height: 1.35;
+}
+
+/* tighter on mobile */
+@media (max-width: 575.98px) {
+  .vmv-max {
+    max-width: 92%;
+  }
+  .value-ico {
+    inline-size: 52px;
+    block-size: 52px;
+  }
+}
+/* Footer */
+.eco-footer {
+  --eco: #7bc043;
+  position: relative;
+  background: url("../images/banner_2.jpg") center/cover no-repeat;
+}
+.eco-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+.eco-footer > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* body with background + overlay */
+.eco-footer__body {
+  padding: 2rem 0 1.25rem;
+}
+.eco-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  margin-right: 0.35rem;
+  font-size: 0.9rem;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.eco-social:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+/* pill trắng trong khối xanh */
+.hotline-pill {
+  max-width: 880px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.9rem 1.25rem;
+  text-align: center;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  font-size: clamp(1rem, 2.2vw, 1.4rem);
+  line-height: 1.2;
+}
+
+.hotline-pill .label {
+  color: #8a8f95; /* xám nhạt như ảnh */
+  margin-right: 0.35rem;
+}
+
+.hotline-pill .number {
+  color: #7bc043; /* xanh thương hiệu */
+  font-weight: 800;
+}
+
+/* thu gọn chút trên mobile */
+@media (max-width: 575.98px) {
+  .hotline-pill {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* bottom strip */
+.eco-footer__bottom {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* responsive */
+@media (max-width: 991.98px) {
+  .signup-callout {
+    transform: none;
+    margin-top: 0;
+  }
+}
+
+/* ===== Contact section ===== */
+:root {
+  --eco: #7bc043;
+  --eco-dark: #53a948;
+}
+
+.contact-card {
+  background: #fff;
+  border-radius: 16px;
+  border-left: 6px solid var(--eco);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+.contact-section .form-label {
+  font-weight: 600;
+}
+
+.contact-section .form-control {
+  padding: 0.85rem 1rem;
+  border-radius: 0.7rem;
+  border: 1px solid #e4e7ec;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.contact-section .form-control:focus {
+  border-color: var(--eco);
+  box-shadow: 0 0 0 0.2rem rgba(123, 192, 67, 0.15);
+}
+
+.contact-section .btn-submit {
+  padding: 0.75rem 1.1rem;
+  font-weight: 700;
+  border-radius: 0.7rem;
+  box-shadow: 0 8px 18px rgba(123, 192, 67, 0.25);
+}
+.contact-section .btn-submit:hover {
+  background: var(--eco-dark);
+}
+
+/* Info list on the right */
+.info-list .ico {
+  inline-size: 34px;
+  block-size: 34px;
+  border: 2px solid var(--eco);
+  color: var(--eco);
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
+  flex: 0 0 auto;
+}
+.info-list a {
+  color: inherit;
+  text-decoration: underline dotted;
+}
+
+/* spacing tweak on small screens */
+@media (max-width: 991.98px) {
+  .contact-card {
+    border-left-width: 4px;
+  }
+}
+
+/* Heading bar xanh */
+.category-bar {
+  background: #86c86f;
+  color: #fff;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-weight: 800;
+  font-size: clamp(1.05rem, 2.2vw, 1.6rem);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+/* Sidebar filter */
+.filter-box {
+  padding-top: 0.25rem;
+}
+.filter-list li {
+  margin: 0.75rem 0;
+}
+.filter-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: #7b7f84;
+  cursor: pointer;
+}
+.filter-link:hover {
+  color: #222;
+}
+.filter-link.active {
+  color: #111;
+  font-weight: 700;
+  border-bottom: 2px solid #111;
+}
+
+/* Tinh chỉnh card để khớp ảnh */
+.product-card {
+  padding-top: 140px;
+}
+.product-figure {
+  top: -110px;
+  width: 240px;
+}
+.product-img {
+  max-width: 88%;
+}
