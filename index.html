@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Eco Straws Vietnam – Giao diện mẫu (Bootstrap)</title>
+    <title>Eco Straws Vietnam</title>
     <meta
       name="description"
-      content="Giao diện mẫu tái dựng cấu trúc trang Eco Straws Vietnam bằng Bootstrap 5 và jQuery. Không chứa nội dung/hình ảnh sở hữu trí tuệ, chỉ dùng văn bản & ảnh mẫu."
+      content="Eco Straws Vietnam bằng Bootstrap 5 và jQuery. Không chứa nội dung/hình ảnh sở hữu trí tuệ, chỉ dùng văn bản & ảnh mẫu."
     />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link
@@ -32,8 +32,12 @@
           class="navbar-brand fw-bold d-flex align-items-center"
           href="index.html"
         >
-          <span class="brand-mark me-2" aria-hidden="true"></span>
-          Eco Straws Vietnam
+          <img
+            src="/assets/images/brand.png"
+            alt="Eco Straws Vietnam"
+            class="img-fluid"
+            style="width: auto; height: 40px"
+          />
         </a>
         <button
           class="navbar-toggler"
@@ -63,16 +67,16 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Trang chủ</a>
+                <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="products.html">Sản phẩm</a>
+                <a class="nav-link" href="products.html">Products</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html">Về chúng tôi</a>
+                <a class="nav-link" href="about.html">About us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Liên hệ</a>
+                <a class="nav-link" href="contact.html">Contact</a>
               </li>
             </ul>
           </div>
@@ -86,19 +90,20 @@
           <div class="row align-items-center">
             <div class="col-lg-6">
               <h1 class="display-5 fw-bold mb-3">
-                Giải pháp ống hút & sản phẩm
-                <span class="text-gradient">thân thiện môi trường</span>
+                <span class="text-gradient outline-boost"
+                  >Eco-friendly Straws </span
+                ><span class="text-white">Sustainable Products</span>
               </h1>
-              <p class="lead text-secondary">
-                Giao diện mẫu linh hoạt cho doanh nghiệp xanh: ống hút gạo, ống
-                hút giấy, dụng cụ ăn uống sinh học và hơn thế nữa.
+              <p class="lead text-white">
+                Providing sustainable solutions for eco-conscious brands: <br />
+                rice straws, paper straws, and biodegradable tableware.
               </p>
               <div class="d-flex gap-3 mt-3">
                 <a href="products.html" class="btn btn-success btn-lg"
-                  ><i class="bi bi-bag me-1"></i> Xem sản phẩm</a
+                  ><i class="bi bi-bag pe-1"></i> Explore Products</a
                 >
-                <a href="contact.html" class="btn btn-outline-success btn-lg"
-                  ><i class="bi bi-envelope me-1"></i> Nhận báo giá</a
+                <a href="contact.html" class="btn btn-secondary btn-lg"
+                  ><i class="bi bi-envelope pe-1"></i> Request a Quote</a
                 >
               </div>
             </div>
@@ -106,26 +111,28 @@
               <div class="hero-card shadow-lg rounded-4 p-4 bg-white">
                 <div class="d-flex align-items-center mb-3">
                   <i class="bi bi-leaf display-6 me-2"></i>
-                  <h2 class="h4 mb-0">Cam kết Xanh</h2>
+                  <h2 class="h4 mb-0">Our Green Commitment</h2>
                 </div>
                 <ul class="list-unstyled mb-0">
                   <li class="d-flex align-items-start mb-2">
                     <i class="bi bi-check2-circle me-2 text-success"></i
                     ><span
-                      >Thay thế nhựa dùng một lần bằng nguyên liệu tự
-                      nhiên.</span
-                    >
+                      >A natural, eco-friendly alternative replacing single-use
+                      plastics worldwide.
+                    </span>
                   </li>
                   <li class="d-flex align-items-start mb-2">
                     <i class="bi bi-check2-circle me-2 text-success"></i
                     ><span
-                      >Thiết kế tối ưu cho hiệu năng và trải nghiệm uống.</span
+                      >Thoughtfully crafted to deliver perfect balance of
+                      function and feel.</span
                     >
                   </li>
                   <li class="d-flex align-items-start">
                     <i class="bi bi-check2-circle me-2 text-success"></i
                     ><span
-                      >Dễ tích hợp cho website đa ngôn ngữ và đa trang.</span
+                      >Simple, seamless integration across all websites and
+                      digital platforms.</span
                     >
                   </li>
                 </ul>
@@ -146,43 +153,43 @@
       </section>
 
       <!-- FEATURES -->
-      <section class="py-5 bg-light my-5">
+      <section class="features py-5 bg-light my-5">
         <div class="container">
           <div class="row text-center g-4">
             <div class="col-6 col-lg-3">
               <div class="feature">
-                <i class="bi bi-globe-americas display-6"></i>
-                <h3 class="h6 mt-2">100% Natural</h3>
-                <p class="small text-secondary">
-                  Made entirely from natural ingredients
-                </p>
+                <span class="icon-badge">
+                  <i class="bi bi-globe-americas"></i>
+                </span>
+                <h3 class="h5">100% Natural</h3>
+                <p class="small-text">Made from natural ingredients</p>
               </div>
             </div>
             <div class="col-6 col-lg-3">
               <div class="feature">
-                <i class="bi bi-shield-check display-6"></i>
-                <h3 class="h6 mt-2">Eco-friendly</h3>
-                <p class="small text-secondary">
-                  Safe for you, kind to the planet
-                </p>
+                <span class="icon-badge">
+                  <i class="bi bi-shield-check"></i>
+                </span>
+                <h3 class="h5">Eco-friendly</h3>
+                <p class="small-text">Safe for you, kind to the planet</p>
               </div>
             </div>
             <div class="col-6 col-lg-3">
               <div class="feature">
-                <i class="bi bi-recycle display-6"></i>
-                <h3 class="h6 mt-2">Renewable Energy</h3>
-                <p class="small text-secondary">
-                  Sustainably produced using green energy
-                </p>
+                <span class="icon-badge">
+                  <i class="bi bi-recycle"></i>
+                </span>
+                <h3 class="h5">Renewable Energy</h3>
+                <p class="small-text">Powered by green energy</p>
               </div>
             </div>
             <div class="col-6 col-lg-3">
               <div class="feature">
-                <i class="bi bi-brightness-alt-high-fill display-6"></i>
-                <h3 class="h6 mt-2">Plastic-free Future</h3>
-                <p class="small text-secondary">
-                  Reducing plastic waste, protecting nature
-                </p>
+                <span class="icon-badge">
+                  <i class="bi bi-brightness-alt-high-fill"></i>
+                </span>
+                <h3 class="h5">Plastic-free Future</h3>
+                <p class="small-text">Reducing waste, protecting nature</p>
               </div>
             </div>
           </div>
@@ -192,38 +199,32 @@
       <!-- PRODUCTS PREVIEW -->
       <section class="py-5 mt-5" id="products">
         <div class="container">
-          <h2 class="text-center mb-5">Our Products</h2>
+          <!-- Header + Filter -->
           <div
-            class="d-flex justify-content-end align-items-end flex-wrap gap-2 mb-3"
+            class="section-head d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4"
           >
-            <div class="btn-group" role="group" aria-label="Lọc sản phẩm">
-              <button
-                class="btn btn-outline-success btn-sm filter-btn active"
-                data-filter="*"
-              >
-                Tất cả
+            <div class="head-left">
+              <span class="eyebrow">Explore</span>
+              <h2 class="title mb-1">OUR PRODUCTS</h2>
+            </div>
+
+            <!-- Filter pills -->
+            <div class="filter-pills" role="group" aria-label="Filter products">
+              <button class="pill active" data-filter="*">
+                <i class="bi bi-grid me-1"></i> All products
               </button>
-              <button
-                class="btn btn-outline-success btn-sm filter-btn"
-                data-filter="rice"
-              >
-                Nutritional Noodles
+              <button class="pill" data-filter="rice">
+                <i class="bi bi-bag-check me-1"></i> Nutritional Noodles
               </button>
-              <button
-                class="btn btn-outline-success btn-sm filter-btn"
-                data-filter="paper"
-              >
-                Rice straws
+              <button class="pill" data-filter="paper">
+                <i class="bi bi-cup-straw me-1"></i> Rice straws
               </button>
-              <button
-                class="btn btn-outline-success btn-sm filter-btn"
-                data-filter="tableware"
-              >
-                Stirring bar
+              <button class="pill" data-filter="tableware">
+                <i class="bi bi-sliders2 me-1"></i> Stirring bar
               </button>
             </div>
           </div>
-
+          <!-- list products here -->
           <div class="row g-4 product-grid mt-5">
             <div class="row products-row mt-5">
               <!-- Rainbow Noodles -->
@@ -285,98 +286,137 @@
             </div>
           </div>
         </div>
+        <script>
+          document
+            .querySelectorAll("#products .filter-pills .pill")
+            .forEach((btn) => {
+              btn.addEventListener("click", function () {
+                // active UI
+                document
+                  .querySelectorAll("#products .filter-pills .pill")
+                  .forEach((b) => b.classList.remove("active"));
+                this.classList.add("active");
+
+                // nếu bạn đã có code lọc theo data-filter, gọi lại ở đây.
+                // Ví dụ: filterIsotope(this.dataset.filter);  (tùy bạn đang dùng gì)
+              });
+            });
+        </script>
       </section>
 
       <!-- PROCESS -->
       <section class="process-section" id="process">
         <div class="container">
-          <h2 class="title text-center mt-3">Production Process</h2>
-          <p class="subtitle text-center">Quy trình sản xuất ống hút gạo</p>
+          <h2 class="title text-center mt-3">PRODUCTION PROCESS</h2>
+          <p class="text-center pb-3">Rice straw production process</p>
 
           <div class="timeline">
             <div class="row row-cols-1 row-cols-lg-5 g-5 align-items-center">
               <!-- 1 -->
               <div class="col">
-                <div class="step">
+                <div class="step reveal-up">
                   <div class="circle-wrap">
                     <div class="circle">
                       <i class="bi bi-bag-check bi-process"></i>
                     </div>
                   </div>
-                  <div class="mt-2 label">Nguyên liệu</div>
-                  <div class="sublabel">Bột gạo, năng, phụ liệu màu</div>
+                  <div class="mt-4 label">Raw Materials</div>
+                  <div class="sublabel">
+                    Rice flour, tapioca starch, natural colorants
+                  </div>
                 </div>
               </div>
+
               <!-- 2 -->
               <div class="col">
-                <div class="step">
+                <div class="step reveal-up">
                   <div class="circle-wrap">
                     <div class="circle">
                       <i class="bi bi-droplet-half bi-process"></i>
                     </div>
                   </div>
-                  <div class="mt-2 label">Trộn bột</div>
-                  <div class="sublabel">Tỷ lệ hao hụt ~2%</div>
+                  <div class="mt-4 label">Mixing</div>
+                  <div class="sublabel">Loss rate ~2%</div>
                 </div>
               </div>
+
               <!-- 3 -->
               <div class="col">
-                <div class="step">
+                <div class="step reveal-up">
                   <div class="circle-wrap">
                     <div class="circle">
                       <i class="bi bi-diagram-3 bi-process"></i>
                     </div>
                   </div>
-                  <div class="mt-2 label">Ép đùn</div>
-                  <div class="sublabel">Tạo hình ống hút. 80–90°C</div>
+                  <div class="mt-4 label">Extrusion</div>
+                  <div class="sublabel">Forming the straw <br />80 - 90°C</div>
                 </div>
               </div>
+
               <!-- 4 -->
               <div class="col">
-                <div class="step">
+                <div class="step reveal-up">
                   <div class="circle-wrap">
                     <div class="circle">
                       <i class="bi bi-thermometer-half bi-process"></i>
                     </div>
                   </div>
-                  <div class="mt-2 label">Cắt & sấy</div>
-                  <div class="sublabel">Sấy lạnh. Hao hụt ~3%</div>
+                  <div class="mt-4 label">Cutting &amp; Drying</div>
+                  <div class="sublabel">Cold-drying <br />Loss rate ~3%</div>
                 </div>
               </div>
+
               <!-- 5 -->
               <div class="col">
-                <div class="step">
+                <div class="step reveal-up">
                   <div class="circle-wrap">
                     <div class="circle">
                       <i class="bi bi-box-seam bi-process"></i>
                     </div>
                   </div>
-                  <div class="mt-2 label">Đóng gói</div>
-                  <div class="sublabel">Hút chân không – xuất kho</div>
+                  <div class="mt-4 label">Packaging</div>
+                  <div class="sublabel">Vacuum sealed dispatch</div>
                 </div>
               </div>
             </div>
           </div>
-
-          <p class="text-center text-muted mt-4"></p>
         </div>
+        <script>
+          (function () {
+            const els = document.querySelectorAll("#process .reveal-up");
+            if (!("IntersectionObserver" in window)) {
+              els.forEach((e) => e.classList.add("is-in"));
+              return;
+            }
+            const io = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((en) => {
+                  if (en.isIntersecting) {
+                    en.target.classList.add("is-in");
+                    io.unobserve(en.target);
+                  }
+                });
+              },
+              { threshold: 0.25 }
+            );
+            els.forEach((e) => io.observe(e));
+          })();
+        </script>
       </section>
 
-      <!-- CERTIFICATIONS – marquee rightward -->
+      <!-- CERTIFICATIONS -->
       <section class="py-5 my-5 bg-light">
         <div class="container">
-          <h2 class="h5 mb-3 text-center">
-            Certifications & Inspection Partners
+          <h2 class="title mb-4 text-center">
+            CERTIFICATIONS & INSPECTION PARTNERS
           </h2>
 
           <div class="marquee marquee--3 mx-auto">
             <div class="marquee__track">
-              <!-- Thêm class rotate-90 nếu file ảnh đang nằm dọc và cần xoay ngang -->
               <img src="assets/images/certs/logo1.jpg" alt="ISO 22000:2018" />
               <img src="assets/images/certs/logo2.jpg" alt="FSPCA" />
               <img src="assets/images/certs/logo3.jpg" alt="Eurofins" />
 
-              <!-- Lặp lại 1 lần để cuộn vô hạn mượt -->
               <img
                 src="assets/images/certs/logo1.jpg"
                 alt=""
@@ -467,103 +507,130 @@
         </div>
       </section>
 
-      <!-- ECO INFO (3x2, fit one view) -->
-      <section class="eco-mini py-5 my-5">
-        <div class="container h-100 d-flex flex-column">
+      <!-- ECO INFO (3x2 grid with clickable cards) -->
+      <section class="eco-mini py-5 my-4">
+        <div class="container">
           <h2 class="h3 text-center fw-bold mb-3">
-            MỘT SỐ HOẠT ĐỘNG CỦA CHÚNG TÔI
+            ACTIONS FOR A GREENER FUTURE
           </h2>
 
-          <div class="row g-3 g-lg-4 eco-mini-grid mt-auto mb-auto">
-            <!-- Item 1 -->
+          <div class="row g-3 g-lg-3 eco-mini-grid">
+            <!-- 1 -->
             <div class="col-6 col-lg-4">
-              <article class="eco-mini-card h-100">
-                <figure class="ratio ratio-4x3 eco-mini-figure">
+              <a
+                class="eco-mini-card"
+                href="https://www.facebook.com/share/p/1D8iYQWdbq/"
+              >
+                <figure class="ratio eco-mini-figure">
                   <img
-                    src="assets/images/banner_4.jpg"
+                    src="assets/images/grid/grid_1.jpg"
+                    alt="Nutritious meals for families"
                     class="eco-mini-img"
-                    alt=""
                   />
                 </figure>
                 <div class="eco-mini-body">
-                  <h3 class="eco-mini-title">Nutritious meals for families</h3>
+                  <h3 class="eco-mini-title">Growing Eco-Friendly Demand</h3>
                 </div>
-              </article>
+              </a>
             </div>
-            <!-- Item 2 -->
+
+            <!-- 2 -->
             <div class="col-6 col-lg-4">
-              <article class="eco-mini-card h-100">
-                <figure class="ratio ratio-4x3 eco-mini-figure">
+              <a
+                class="eco-mini-card"
+                href="https://www.facebook.com/share/p/17Q6GFwYek/"
+              >
+                <figure class="ratio eco-mini-figure">
                   <img
-                    src="assets/images/banner_1.jpg"
+                    src="assets/images/grid/grid_2.jpg"
+                    alt="Reduce plastic waste"
                     class="eco-mini-img"
-                    alt=""
                   />
                 </figure>
                 <div class="eco-mini-body">
-                  <h3 class="eco-mini-title">Reduce plastic waste</h3>
+                  <h3 class="eco-mini-title">Eco Straws at Aeon Fair</h3>
                 </div>
-              </article>
+              </a>
             </div>
-            <!-- Item 3 -->
+
+            <!-- 3 -->
             <div class="col-6 col-lg-4">
-              <article class="eco-mini-card h-100">
-                <figure class="ratio ratio-4x3 eco-mini-figure">
+              <a
+                class="eco-mini-card"
+                href="https://www.facebook.com/share/p/17hWb2K7eK/"
+              >
+                <figure class="ratio eco-mini-figure">
                   <img
-                    src="assets/images/banner_2.jpg"
+                    src="assets/images/grid/grid_3.jpg"
+                    alt="Community & environment"
                     class="eco-mini-img"
-                    alt=""
                   />
                 </figure>
                 <div class="eco-mini-body">
-                  <h3 class="eco-mini-title">Community & environment</h3>
+                  <h3 class="eco-mini-title">
+                    Eco Straws: Green Dream Realized
+                  </h3>
                 </div>
-              </article>
+              </a>
             </div>
-            <!-- Item 4 -->
+
+            <!-- 4 -->
             <div class="col-6 col-lg-4">
-              <article class="eco-mini-card h-100">
-                <figure class="ratio ratio-4x3 eco-mini-figure">
+              <a
+                class="eco-mini-card"
+                href="https://www.facebook.com/share/p/1BV8JicKpr/"
+              >
+                <figure class="ratio eco-mini-figure">
                   <img
-                    src="assets/images/banner_2.jpg"
+                    src="assets/images/grid/grid_4.jpg"
+                    alt="Healthy lifestyle"
                     class="eco-mini-img"
-                    alt=""
                   />
                 </figure>
                 <div class="eco-mini-body">
-                  <h3 class="eco-mini-title">Healthy lifestyle</h3>
+                  <h3 class="eco-mini-title">
+                    Eco Straws: Sustainable Business Solutions
+                  </h3>
                 </div>
-              </article>
+              </a>
             </div>
-            <!-- Item 5 -->
+
+            <!-- 5 -->
             <div class="col-6 col-lg-4">
-              <article class="eco-mini-card h-100">
-                <figure class="ratio ratio-4x3 eco-mini-figure">
+              <a
+                class="eco-mini-card"
+                href="https://www.facebook.com/share/p/1CMrdhXQqs/"
+              >
+                <figure class="ratio eco-mini-figure">
                   <img
-                    src="assets/images/banner_3.jpg"
+                    src="assets/images/grid/grid_5.jpg"
+                    alt="Circular practices"
                     class="eco-mini-img"
-                    alt=""
                   />
                 </figure>
                 <div class="eco-mini-body">
-                  <h3 class="eco-mini-title">Circular practices</h3>
+                  <h3 class="eco-mini-title">Eco Straws' Green Factory</h3>
                 </div>
-              </article>
+              </a>
             </div>
-            <!-- Item 6 -->
+
+            <!-- 6 -->
             <div class="col-6 col-lg-4">
-              <article class="eco-mini-card h-100">
-                <figure class="ratio ratio-4x3 eco-mini-figure">
+              <a
+                class="eco-mini-card"
+                href="https://www.facebook.com/share/p/1BG1krZE4U/"
+              >
+                <figure class="ratio eco-mini-figure">
                   <img
-                    src="assets/images/banner_1.jpg"
+                    src="assets/images/grid/grid_6.jpg"
+                    alt="Green energy"
                     class="eco-mini-img"
-                    alt=""
                   />
                 </figure>
                 <div class="eco-mini-body">
-                  <h3 class="eco-mini-title">Green energy</h3>
+                  <h3 class="eco-mini-title">EcoStraws at VICHI Market</h3>
                 </div>
-              </article>
+              </a>
             </div>
           </div>
         </div>
@@ -609,16 +676,25 @@
 
               <div class="mt-3">
                 <span class="me-2">Follow us:</span>
-                <a class="eco-social" href="#"
+                <a
+                  class="eco-social"
+                  href="https://www.facebook.com/Ecostrawsvietnam"
                   ><i class="bi bi-facebook"></i
                 ></a>
-                <a class="eco-social" href="#"><i class="bi bi-youtube"></i></a>
-                <a class="eco-social" href="#"><i class="bi bi-tiktok"></i></a>
-                <a class="eco-social" href="#"
-                  ><i class="bi bi-instagram"></i
+                <a
+                  class="eco-social"
+                  href="https://www.youtube.com/@EcoStrawsVietNam2018"
+                  ><i class="bi bi-youtube"></i
                 ></a>
-                <a class="eco-social" href="#"
-                  ><i class="bi bi-whatsapp"></i
+                <a
+                  class="eco-social"
+                  href="https://www.tiktok.com/@ecostraws.official"
+                  ><i class="bi bi-tiktok"></i
+                ></a>
+                <a
+                  class="eco-social"
+                  href="https://www.instagram.com/ecostrawsviet/"
+                  ><i class="bi bi-instagram"></i
                 ></a>
               </div>
             </div>
@@ -637,9 +713,13 @@
 
             <div class="col-sm-6 col-lg-3">
               <h6 class="fw-bold text-uppercase mb-2">About Eco Straws</h6>
-              <ul class="list-unstyled text-white-75 mb-0">
-                <li>Who are we</li>
-                <li>Office and Factory</li>
+              <ul class="list-unstyled mb-0">
+                <a href="about.html" class="text-white text-decoration-none"
+                  ><li>Who are we</li></a
+                >
+                <a href="about.html" class="text-white text-decoration-none"
+                  ><li>Office and Factory</li></a
+                >
               </ul>
             </div>
           </div>

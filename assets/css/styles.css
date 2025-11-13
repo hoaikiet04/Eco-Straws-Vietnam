@@ -30,27 +30,57 @@ main section {
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.075) !important;
   backdrop-filter: saturate(1.3) blur(8px);
 }
-.brand-mark {
-  inline-size: 1.25rem;
-  block-size: 1.25rem;
-  border-radius: 0.35rem;
-  background: linear-gradient(135deg, var(--brand) 0%, #2dd07b 100%);
-  display: inline-block;
-}
 .hero {
-  /* background-image: url("../images/banner_1.jpg"); */
+  background-image: url("../images/background.jpg");
   background-size: cover;
   background-position: center;
   position: relative;
+  isolation: isolate; /* để pseudo-layer nằm trên bg */
   z-index: 1;
-  padding-block: 6rem 0;
+  padding-block: clamp(4rem, 8vw, 6.5rem) 0;
 }
+
+/* overlay trắng giúp ảnh “bớt chìm” */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.12); /* ↑ giảm/tăng .08 – .16 tùy mắt */
+  pointer-events: none;
+}
+
+/* trên màn hình nhỏ, tăng tương phản để chữ vẫn rõ */
+@media (max-width: 767.98px) {
+  .hero::before {
+    background: rgba(0, 0, 0, 0.18);
+  } /* tối nhẹ cho mobile */
+  .hero h1,
+  .hero p {
+    color: #fff;
+  }
+}
+
 .text-gradient {
   background: linear-gradient(90deg, var(--brand) 0%, #2dd07b 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  -webkit-text-fill-color: transparent; /* đảm bảo gradient hiển thị trên mọi trình duyệt WebKit */
+  font-weight: 800;
 }
+
+/* phiên bản khỏe hơn của outline */
+.text-gradient.outline-boost {
+  -webkit-text-stroke: 1.6px rgba(0, 0, 0, 0.45); /* viền đậm hơn 1.6px */
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.08),
+    /* viền sáng rất nhẹ bên trong */ 0 2px 12px rgba(0, 0, 0, 0.4),
+    /* bóng nền để tách khỏi background */ 0 0 10px rgba(45, 208, 123, 0.35); /* chút glow màu gradient */
+}
+@media (max-width: 576px) {
+  .text-gradient.outline-boost {
+    -webkit-text-stroke: 1.2px rgba(0, 0, 0, 0.45);
+  }
+}
+
 .hero-wave {
   position: absolute;
   inset-inline: 0;
@@ -75,48 +105,128 @@ main section {
   background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
   background-color: #fff;
 }
+
+/* FEATURES */
 .feature i {
   color: var(--brand);
 }
-.timeline {
-  list-style: none;
-  padding-left: 0;
-}
-.timeline li {
-  position: relative;
-  padding-left: 1.75rem;
-  margin-bottom: 0.75rem;
-}
-.timeline li::before {
-  content: "";
-  position: absolute;
-  left: 0.25rem;
-  top: 0.5rem;
-  inline-size: 0.5rem;
-  block-size: 0.5rem;
-  border-radius: 50%;
-  background: var(--brand);
-  box-shadow: 0 0 0 4px var(--brand-25);
-}
-.cert-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  block-size: 100px;
-  border: 1px dashed rgba(0, 0, 0, 0.15);
-  border-radius: 0.75rem;
-  background: #fff;
-  font-weight: 700;
-  color: var(--brand-dark);
-}
-.card .ratio {
-  background-color: #fff;
-}
-footer {
-  background: #fff;
+:root {
+  --brand: #198754; /* xanh thương hiệu Bootstrap success */
+  --brand-2: #83cf93; /* xanh nhạt cho viền/badge */
 }
 
-/* ====== PRODUCT CARDS – like sample ====== */
+/* ===== Features ===== */
+.features .feature {
+  background: #fff;
+  border: 1px solid #eef4ef;
+  border-radius: 16px;
+  padding: 24px 18px;
+  height: 100%;
+  position: relative;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s;
+}
+.features .feature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  border-color: #e4efe7;
+}
+
+/* Icon badge */
+.icon-badge {
+  inline-size: 64px;
+  block-size: 64px;
+  display: inline-grid;
+  place-items: center;
+  margin-inline: auto;
+  margin-bottom: 0.6rem;
+  border-radius: 50%;
+  color: var(--brand);
+  background: linear-gradient(180deg, #f3fbf6 0%, #e8f7ed 100%);
+  border: 2px solid var(--brand-2);
+  box-shadow: 0 8px 18px rgba(25, 135, 84, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+.icon-badge i {
+  font-size: 28px;
+  line-height: 1;
+}
+
+/* Title & copy */
+.features .feature h3 {
+  font-weight: 800;
+  margin: 0.25rem 0 0.25rem;
+}
+.features .feature p {
+  color: #6b7280; /* xám dễ đọc hơn */
+  margin: 0;
+}
+
+/* khoảng cách đều hơn giữa các mục */
+.features .row {
+  row-gap: 1.25rem;
+}
+
+/* mobile: thu nhỏ badge một chút để gọn */
+@media (max-width: 575.98px) {
+  .icon-badge {
+    inline-size: 56px;
+    block-size: 56px;
+  }
+}
+
+/* ====== PRODUCT CARDS  ====== */
+
+.section-head .title {
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  font-size: clamp(1.25rem, 3.2vw, 1.75rem);
+}
+.eyebrow {
+  display: inline-block;
+  background: linear-gradient(90deg, #198754 0%, #69c167 100%);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+/* Pills */
+.filter-pills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.pill {
+  background: #f3fbf6;
+  border: 1px solid #d8efe1;
+  color: #198754;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  font-weight: 700;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+.pill:hover {
+  background: #e9f8ef;
+  border-color: #cfead9;
+  transform: translateY(-1px);
+}
+.pill.active {
+  background: #198754;
+  color: #fff;
+  border-color: #198754;
+  box-shadow: 0 10px 22px rgba(25, 135, 84, 0.25);
+}
+
+/* Khoảng cách nhẹ giữa header và grid */
+.product-grid {
+  margin-top: 0.25rem !important;
+}
 .product-card {
   border: 0;
   border-radius: 18px;
@@ -186,7 +296,23 @@ footer {
 .btn-pill:hover {
   background: #5ab156;
 }
-
+.cert-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  block-size: 100px;
+  border: 1px dashed rgba(0, 0, 0, 0.15);
+  border-radius: 0.75rem;
+  background: #fff;
+  font-weight: 700;
+  color: var(--brand-dark);
+}
+.card .ratio {
+  background-color: #fff;
+}
+footer {
+  background: #fff;
+}
 /* spacing between cards */
 .products-row {
   row-gap: 2.2rem;
@@ -214,14 +340,17 @@ footer {
   }
 }
 /* PROCESS */
-/* ===== Timeline ===== */
+/* ===== Process – polished & animated ===== */
+.process-section {
+  position: relative;
+}
+
+/* Timeline rail with subtle shimmer */
 .timeline {
   position: relative;
   max-width: 1100px;
   margin: 40px auto 0;
 }
-
-/* horizontal rail */
 .timeline::before {
   content: "";
   position: absolute;
@@ -230,13 +359,39 @@ footer {
   top: 50%;
   transform: translateY(-50%);
   height: 8px;
-  background: linear-gradient(90deg, var(--brand-2), var(--rail));
   border-radius: 999px;
+  background: linear-gradient(
+        90deg,
+        rgba(25, 135, 84, 0.25),
+        rgba(25, 135, 84, 0.1)
+      )
+      /* base */,
+    linear-gradient(
+      90deg,
+      transparent 0 40%,
+      rgba(105, 193, 103, 0.45) 50%,
+      transparent 60%
+    ); /* shimmer */
+  background-size: 100% 100%, 260px 100%;
+  background-repeat: no-repeat;
+  animation: rail-shimmer 2.8s linear infinite;
+}
+@keyframes rail-shimmer {
+  0% {
+    background-position: 0 0, -260px 0;
+  }
+  100% {
+    background-position: 0 0, 110% 0;
+  }
 }
 
 .step {
   position: relative;
   text-align: center;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+.step:hover {
+  transform: translateY(-6px);
 }
 
 /* connector dot to rail */
@@ -244,31 +399,20 @@ footer {
   content: "";
   position: absolute;
   left: 50%;
+  top: calc(50% - 6px);
   transform: translateX(-50%);
   width: 12px;
   height: 12px;
-  background: var(--brand-2);
   border-radius: 50%;
-  top: calc(50% - 6px);
-  box-shadow: 0 0 0 6px #fff; /* viền trắng tách khỏi đường */
+  background: #198754; /* var(--brand) fallback */
+  box-shadow: 0 0 0 6px #fff;
 }
 
-/* main circle */
-.circle {
-  width: 150px;
-  height: 150px;
-  margin: 0 auto 12px;
-  background: #fff;
-  border-radius: 50%;
-  border: 8px solid var(--brand-3);
-  display: grid;
-  place-items: center;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
-}
-/* outer ring */
+/* Outer ring with slow spin */
 .circle-wrap {
+  --size: 170px;
   position: relative;
-  width: 180px;
+  width: var(--size);
   margin: 0 auto;
 }
 .circle-wrap::before {
@@ -276,18 +420,69 @@ footer {
   position: absolute;
   inset: -12px;
   border-radius: 50%;
-  border: 6px solid var(--brand-2);
-  z-index: 0;
+  background: conic-gradient(#69c167 0 30%, #198754 30% 60%, #69c167 60% 100%);
+  filter: saturate(1.1);
+  animation: spin 14s linear infinite;
 }
-.circle {
-  position: relative;
-  z-index: 1;
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
 }
 
+/* Number badge */
+.badge-step {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  background: #198754;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(25, 135, 84, 0.25);
+  z-index: 2;
+}
+
+/* Inner circle + ripple */
+.circle {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  border: 8px solid #3f7e59; /* var(--brand-3) fallback */
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
 .bi-process {
   font-size: 52px;
-  color: var(--brand);
+  color: #198754;
 }
+.step:hover .circle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(105, 193, 103, 0.3);
+  animation: ripple 1.25s ease-out infinite;
+}
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(105, 193, 103, 0.3);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(105, 193, 103, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(105, 193, 103, 0);
+  }
+}
+
 .label {
   font-weight: 800;
 }
@@ -295,7 +490,34 @@ footer {
   color: #5f6b5f;
 }
 
-/* mobile: vertical layout */
+/* Reveal on scroll */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.reveal-up.is-in {
+  opacity: 1;
+  transform: none;
+  transition: all 0.6s ease;
+}
+/* small delay per column (nice cascade) */
+.row .col:nth-child(1) .reveal-up {
+  transition-delay: 0.05s;
+}
+.row .col:nth-child(2) .reveal-up {
+  transition-delay: 0.15s;
+}
+.row .col:nth-child(3) .reveal-up {
+  transition-delay: 0.25s;
+}
+.row .col:nth-child(4) .reveal-up {
+  transition-delay: 0.35s;
+}
+.row .col:nth-child(5) .reveal-up {
+  transition-delay: 0.45s;
+}
+
+/* Mobile: vertical line */
 @media (max-width: 991.98px) {
   .timeline::before {
     left: calc(50% - 4px);
@@ -304,21 +526,44 @@ footer {
     height: 100%;
     top: 0;
     transform: none;
+    animation: rail-shimmer-vert 2.8s linear infinite;
+    background: linear-gradient(
+        180deg,
+        rgba(25, 135, 84, 0.25),
+        rgba(25, 135, 84, 0.1)
+      ),
+      linear-gradient(
+        180deg,
+        transparent 0 40%,
+        rgba(105, 193, 103, 0.45) 50%,
+        transparent 60%
+      );
+    background-size: 100% 100%, 100% 240px;
   }
-  .step {
-    text-align: center;
-    padding: 16px 0;
+  @keyframes rail-shimmer-vert {
+    0% {
+      background-position: 0 0, 0 -240px;
+    }
+    100% {
+      background-position: 0 0, 0 110%;
+    }
   }
-  .step::before {
-    top: auto;
-    bottom: -6px;
-    left: 50%;
-    transform: translateX(-50%);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .timeline::before,
+  .circle-wrap::before,
+  .step:hover .circle::after {
+    animation: none;
+  }
+  .reveal-up {
+    opacity: 1;
+    transform: none;
   }
 }
 
 /*  CERTIFICATIONS */
-/* ===== Certifications Marquee (rightward) – 3 logo viewport ===== */
 .marquee {
   position: relative;
   overflow: hidden;
@@ -448,48 +693,85 @@ footer {
   height: 100%;
   object-fit: cover;
 }
-
-/* ===== Responsive ===== */
-@media (max-width: 991.98px) {
-  #lead .lead-wrap {
-    min-height: unset;
-  }
-  .lead-panel::after {
-    right: -6px;
-    width: clamp(240px, 70vw, 380px);
-    height: clamp(120px, 32vw, 180px);
-    border-top-right-radius: 220px;
-  }
-  .lead-connector {
-    bottom: -34px;
-    height: 38px;
-  }
-  .lead-photo {
-    border-radius: 24px;
-    margin-top: 0.75rem;
-  }
+/* nền rất nhẹ để tách khối */
+#lead {
+  background: radial-gradient(
+      1200px 500px at 10% 10%,
+      rgba(25, 135, 84, 0.05),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px 500px at 90% 100%,
+      rgba(25, 135, 84, 0.04),
+      transparent 55%
+    );
 }
 
-/* ===== ECO INFO ===== */
+/* PANEL với viền gradient mềm */
+.lead-panel {
+  position: relative;
+  border-radius: 22px 120px 22px 120px;
+  border: 1.5px solid transparent;
+  background: #fff;
+  padding-bottom: 4.75rem !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+}
+.lead-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #69c167, #198754);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* badge nhỏ trên tiêu đề */
+.lead-badge {
+  background: linear-gradient(90deg, #198754, #69c167);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  box-shadow: 0 10px 18px rgba(25, 135, 84, 0.18);
+}
+
+/* ===== ECO INFO – compact 3×2 cards with full-card links ===== */
 .eco-mini {
   background: transparent;
 }
 
-/* card sizing tuned to fit 3x2 on ≥992px; will wrap 2x3/1x6 on tablet/mobile */
+/* clickable card */
 .eco-mini-card {
   --radius: 14px;
+  display: block;
   background: #fff;
   border-radius: var(--radius);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: inherit;
   overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
-  height: 100%;
 }
 .eco-mini-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+}
+.eco-mini-card:focus-visible {
+  outline: 3px solid rgba(25, 135, 84, 0.35);
+  outline-offset: 2px;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
 }
 
+/* image area (slightly shorter than 16:9 so thẻ tổng nhỏ gọn hơn) */
+.eco-mini-figure.ratio {
+  --bs-aspect-ratio: 56%;
+}
 .eco-mini-figure {
   background: #f6f7f8;
 }
@@ -497,331 +779,65 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 25px 25px 0 0;
+  display: block;
 }
 
+/* text */
 .eco-mini-body {
-  padding: 0.65rem 0.75rem 1rem;
+  padding: 0.55rem 0.7rem 0.8rem;
 }
 .eco-mini-title {
-  font-size: 0.95rem; /* nhỏ gọn */
+  font-size: 0.9rem;
   font-weight: 800;
   line-height: 1.3;
-  text-align: center;
   text-transform: uppercase;
+  text-align: center;
   margin: 0;
+  letter-spacing: 0.2px;
 }
 
-/* tighter gaps so 3x2 fits nicely */
+/* tighter gaps để đủ 1 viewport */
 .eco-mini-grid {
-  row-gap: 0.9rem !important;
+  row-gap: 0.7rem !important;
 }
 
-/* Desktop height control: make whole grid fit in 1 view neatly */
+/* Desktop: giữ 3x2, card thấp gọn */
 @media (min-width: 992px) {
   .eco-mini {
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
   .eco-mini-card {
-    /* target total height ~ 280–300px depending on header/nav */
-    min-height: 270px;
-  }
-  .eco-mini-title {
-    font-size: 0.9rem;
-  }
+    min-height: 210px;
+  } /* ~ giảm 10–15% so trước */
 }
 
-/* Tablet/mobile: comfortable stacking */
+/* Tablet/Mobile: 2x3 hoặc 1x6, chữ to hơn chút */
 @media (max-width: 991.98px) {
-  .eco-mini {
-    height: auto;
-  }
   .eco-mini-title {
     font-size: 0.95rem;
   }
 }
 
-/* Giảm khoảng cách do class py-5 / my-5 */
-.eco-mini.py-5 {
-  padding-top: 1.25rem !important;
-  padding-bottom: 1.25rem !important;
+/* giảm thêm padding từ py/my của section để không tràn viewport */
+.eco-mini.py-4 {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
 }
-.eco-mini.my-5 {
-  margin-top: 1.25rem !important;
-  margin-bottom: 1.25rem !important;
-}
-
-/* Ảnh thấp hơn: 58% ≈ 16:9 (mặc định 4:3 = 75%) */
-.eco-mini-figure.ratio {
-  --bs-aspect-ratio: 58%;
+.eco-mini.my-4 {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
 }
 
-/* Card gọn hơn */
-.eco-mini-card {
-  --radius: 16px;
-  border-radius: var(--radius);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-}
-.eco-mini-img {
-  border-radius: 16px 16px 0 0;
-}
-
-/* Nội dung và tiêu đề compact */
-.eco-mini-body {
-  padding: 0.5rem 0.6rem 0.75rem;
-}
-.eco-mini-title {
-  font-size: 0.9rem;
-  letter-spacing: 0.2px;
-}
-
-/* Khoảng cách giữa các item nhỏ hơn */
-.eco-mini-grid {
-  row-gap: 0.75rem !important;
-}
-
-/* Desktop: giảm chiều cao tối thiểu của thẻ */
-@media (min-width: 992px) {
-  .eco-mini-card {
-    min-height: 230px;
-  } /* trước đây ~270px */
-}
 /* ============ FOOTER ============ */
-:root {
-  --ec-callout-lift: 64px;
-} /* độ chênh lên của callout */
 
-.ec-footer {
-  position: relative;
-  color: #fff;
-  background: url("../images/banner_1.jpg") center/cover no-repeat fixed; /* đổi đường dẫn nếu cần */
-  overflow: visible;
-}
-.ec-footer::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-}
-.ec-footer > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Container chuẩn */
-.ec-container {
-  width: min(1200px, 92%);
-  margin-inline: auto;
-}
-
-/* Callout xanh chênh lên */
-.ec-footer-hero {
-  margin-top: calc(var(--ec-callout-lift) * -1);
-  padding-top: calc(24px + var(--ec-callout-lift));
-}
 .ec-callout {
   background: #86c86b;
   color: #fff;
   border-radius: 14px;
   text-align: center;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
-}
-.ec-callout h3 {
-  margin: 0 0 18px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-}
-.ec-callout-hotline {
-  background: #fff;
-  color: #7a8086;
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 16px 22px;
-  border-radius: 10px;
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-.ec-callout-number {
-  color: #60b05e; /* xanh đậm số điện thoại */
-  font-weight: 800;
-  text-decoration: none;
-}
-
-/* Thân footer */
-.ec-footer-body {
-  padding: 28px 0 12px;
-}
-.ec-grid {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr;
-  gap: 40px 28px;
-}
-.ec-footer h5 {
-  margin: 0 0 12px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-}
-.ec-list {
-  list-style: disc;
-  padding-left: 1.25rem;
-  margin: 0;
-}
-.ec-list li {
-  margin: 10px 0;
-}
-.ec-list a {
-  color: #fff;
-  text-decoration: none;
-}
-.ec-list a:hover {
-  text-decoration: underline;
-}
-
-/* Follow us */
-.ec-follow {
-  margin-top: 24px;
-}
-.ec-follow > span {
-  display: inline-block;
-  margin-bottom: 10px;
-  font-weight: 700;
-}
-.ec-socials {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-}
-
-.ec-social {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  text-decoration: none;
-  font-size: 20px;
-  transition: transform 0.15s ease, filter 0.15s ease;
-}
-.ec-social:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.1);
-}
-.ec-fb {
-  background: #1877f2;
-}
-.ec-yt {
-  background: #ff0000;
-}
-.ec-tk {
-  background: #000;
-}
-.ec-wa {
-  background: #25d366;
-}
-
-/* đường kẻ và bản quyền */
-.ec-sep {
-  border-color: rgba(255, 255, 255, 0.35);
-  margin: 8px 0 0;
-}
-.ec-copy {
-  text-align: right;
-  padding: 10px 0 18px;
-  opacity: 0.95;
-}
-
-/* Responsive */
-@media (max-width: 991.98px) {
-  :root {
-    --ec-callout-lift: 48px;
-  }
-  .ec-grid {
-    grid-template-columns: 1fr;
-  }
-  .ec-callout h3 {
-    font-size: clamp(18px, 3.8vw, 28px);
-  }
-  .ec-callout-hotline {
-    font-size: clamp(16px, 3.6vw, 22px);
-  }
-}
-@media (max-width: 575.98px) {
-  :root {
-    --ec-callout-lift: 36px;
-  }
-}
-:root {
-  --ec-callout-lift: 56px;
-}
-
-/* Ít khoảng thở trên callout */
-.ec-footer-hero {
-  padding-top: 14px;
-}
-
-/* Callout gọn hơn */
-.ec-callout {
-  padding: 16px 18px 18px;
-  border-radius: 12px;
-}
-.ec-callout h3 {
-  margin-bottom: 12px;
-  font-size: clamp(18px, 3vw, 28px);
-}
-.ec-callout-hotline {
-  max-width: 520px;
-  padding: 12px 16px;
-  font-size: 20px;
-  border-radius: 8px;
-}
-
-/* Thân footer gọn hơn */
-.ec-footer-body {
-  padding: 18px 0 6px;
-}
-.ec-grid {
-  gap: 18px 16px;
-} /* giảm gap giữa 3 cột */
-.ec-list li {
-  margin: 6px 0;
-} /* giảm khoảng cách từng dòng */
-.ec-follow {
-  margin-top: 12px;
-} /* giảm khoảng cách "FOLLOW US" */
-.ec-social {
-  width: 38px;
-  height: 38px;
-  font-size: 18px;
-} /* icon nhỏ hơn */
-.ec-sep {
-  margin-top: 6px;
-} /* đường kẻ sát hơn */
-.ec-copy {
-  padding: 6px 0 10px;
-  font-size: 0.95rem;
-} /* dòng bản quyền thấp hơn */
-
-/* Nếu vẫn muốn ngắn hơn nữa trên laptop màn hình thấp: */
-@media (max-height: 800px) and (min-width: 992px) {
-  .ec-footer-hero {
-    padding-top: 10px;
-  }
-  .ec-callout {
-    padding: 14px 16px 16px;
-  }
-  .ec-callout-hotline {
-    font-size: 18px;
-    padding: 10px 14px;
-  }
-  .ec-footer-body {
-    padding: 14px 0 4px;
-  }
+  padding: 1.5rem 0;
 }
 
 /* ABOUT */
@@ -1094,7 +1110,7 @@ footer {
 .eco-footer {
   --eco: #7bc043;
   position: relative;
-  background: url("../images/banner_2.jpg") center/cover no-repeat;
+  background: url("../images/background.jpg") center/cover no-repeat;
 }
 .eco-footer::before {
   content: "";
@@ -1280,4 +1296,8 @@ footer {
 }
 .product-img {
   max-width: 88%;
+}
+
+padding-hero {
+  margin-top: 200px;
 }
