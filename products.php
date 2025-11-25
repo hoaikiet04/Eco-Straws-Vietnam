@@ -17,72 +17,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=<?= time(); ?>" />
   </head>
   <body>
-    <a class="visually-hidden-focusable" href="#main"
-      >Bỏ qua nội dung điều hướng</a
-    >
-    <nav
-      class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top py-2"
-      id="mainNavbar"
-    >
-      <div class="container">
-        <a
-          class="navbar-brand fw-bold d-flex align-items-center"
-          href="index.html"
-        >
-          <img
-            src="/assets/images/brand.png"
-            alt="Eco Straws Vietnam"
-            class="img-fluid"
-            style="width: auto; height: 40px"
-          />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNav"
-          aria-controls="offcanvasNav"
-          aria-label="Mở menu"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="offcanvas offcanvas-end"
-          tabindex="-1"
-          id="offcanvasNav"
-          aria-labelledby="offcanvasNavLabel"
-        >
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavLabel">Menu</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Đóng"
-            ></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="products.html">Products</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
+  <?php include "includes/connect.php" ?>
+  <?php include "includes/header.php" ?>
     <main id="main" class="pt-5">
       <!-- HERO -->
       <section
@@ -102,12 +41,12 @@
                 rice straws, paper straws, and biodegradable tableware.
               </p>
               <div class="d-flex gap-3 mt-3">
-                <a href="products.html" class="btn btn-success btn-lg"
+                <a href="products.php" class="btn btn-success btn-lg"
                   ><i class="bi bi-bag pe-1"></i> Explore Products</a
                 >
-                <a href="contact.html" class="btn btn-secondary btn-lg"
+                <a href="contact.php" class="btn btn-secondary btn-lg"
                   ><i class="bi bi-envelope pe-1"></i> Request a Quote</a
-                >
+                > 
               </div>
             </div>
             <div class="col-lg-6 mt-5 mt-lg-0">
@@ -316,101 +255,13 @@
       </section>
     </main>
     <!-- ===== FOOTER ===== -->
-    <footer class="eco-footer text-white">
-      <!-- Signup bar -->
-      <div class="container position-relative">
-        <div class="footer-callout ec-callout rounded-4">
-          <h3 class="h3 fw-bold text-uppercase text-center mb-3 mb-md-4">
-            Contact international and domestic business departments
-          </h3>
-
-          <!-- Ô trắng hiển thị hotline -->
-          <div class="hotline-pill">
-            <span class="label">Hotline / Whatsapp / Zalo</span>
-            <span class="number">+84913924933</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Body -->
-      <div class="eco-footer__body">
-        <div class="container">
-          <div class="row g-4">
-            <div class="col-lg-6">
-              <h6 class="fw-bold text-uppercase mb-2">
-                Eco Straws Vietnam Export Joint Stock Company
-              </h6>
-              <ul class="list-unstyled text-white-75 mb-0">
-                <li>
-                  <strong>Office:</strong> DBS Building, 4th floor, Lot 31, Ha
-                  Tri Service and Trade Area, Ha Cau Ward, Ha Dong, Hanoi,
-                  Vietnam.
-                </li>
-                <li>
-                  <strong>Factory address:</strong> Lot CN02, industrial
-                  cluster, Hai Phuong commune, Hai Hau district, Nam Dinh
-                  province.
-                </li>
-              </ul>
-
-              <div class="mt-3">
-                <span class="me-2">Follow us:</span>
-                <a
-                  class="eco-social"
-                  href="https://www.facebook.com/Ecostrawsvietnam"
-                  ><i class="bi bi-facebook"></i
-                ></a>
-                <a
-                  class="eco-social"
-                  href="https://www.youtube.com/@EcoStrawsVietNam2018"
-                  ><i class="bi bi-youtube"></i
-                ></a>
-                <a
-                  class="eco-social"
-                  href="https://www.tiktok.com/@ecostraws.official"
-                  ><i class="bi bi-tiktok"></i
-                ></a>
-                <a
-                  class="eco-social"
-                  href="https://www.instagram.com/ecostrawsviet/"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-              </div>
-            </div>
-
-            <div class="col-sm-6 col-lg-3">
-              <h6 class="fw-bold text-uppercase mb-2">Contact</h6>
-              <ul class="list-unstyled text-white-75 mb-0">
-                <li class="mb-1">
-                  <i class="bi bi-telephone me-2"></i> +84913924933
-                </li>
-                <li>
-                  <i class="bi bi-envelope me-2"></i> info@ecostrawsvietnam.vn
-                </li>
-              </ul>
-            </div>
-
-            <div class="col-sm-6 col-lg-3">
-              <h6 class="fw-bold text-uppercase mb-2">About Eco Straws</h6>
-              <ul class="list-unstyled mb-0">
-                <a href="about.html" class="text-white text-decoration-none"
-                  ><li>Who are we</li></a
-                >
-                <a href="about.html" class="text-white text-decoration-none"
-                  ><li>Office and Factory</li></a
-                >
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <?php include "includes/footer.php" ?>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       defer
     ></script>
-    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/main.js?v=<?= time(); ?>"></script>
   </body>
 </html>

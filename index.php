@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="vi" data-bs-theme="light">
   <head>
@@ -6,7 +11,7 @@
     <title>Eco Straws Vietnam</title>
     <meta
       name="description"
-      content="Eco Straws Vietnam bằng Bootstrap 5 và jQuery. Không chứa nội dung/hình ảnh sở hữu trí tuệ, chỉ dùng văn bản & ảnh mẫu."
+      content="Eco Straws Vietnam"
     />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link
@@ -17,72 +22,12 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=<?= time(); ?>" />
   </head>
   <body>
-    <a class="visually-hidden-focusable" href="#main"
-      >Bỏ qua nội dung điều hướng</a
-    >
-    <nav
-      class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top py-2"
-      id="mainNavbar"
-    >
-      <div class="container">
-        <a
-          class="navbar-brand fw-bold d-flex align-items-center"
-          href="index.html"
-        >
-          <img
-            src="/assets/images/brand.png"
-            alt="Eco Straws Vietnam"
-            class="img-fluid"
-            style="width: auto; height: 40px"
-          />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNav"
-          aria-controls="offcanvasNav"
-          aria-label="Mở menu"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="offcanvas offcanvas-end"
-          tabindex="-1"
-          id="offcanvasNav"
-          aria-labelledby="offcanvasNavLabel"
-        >
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavLabel">Menu</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Đóng"
-            ></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="products.html">Products</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
+  <?php include "includes/connect.php" ?>
+  <?php include "includes/header.php" ?>
+
     <main id="main" class="pt-5">
       <!-- HERO -->
       <section class="hero position-relative overflow-hidden">
@@ -99,10 +44,10 @@
                 rice straws, paper straws, and biodegradable tableware.
               </p>
               <div class="d-flex gap-3 mt-3">
-                <a href="products.html" class="btn btn-success btn-lg"
+                <a href="products.php" class="btn btn-success btn-lg"
                   ><i class="bi bi-bag pe-1"></i> Explore Products</a
                 >
-                <a href="contact.html" class="btn btn-secondary btn-lg"
+                <a href="contact.php" class="btn btn-secondary btn-lg"
                   ><i class="bi bi-envelope pe-1"></i> Request a Quote</a
                 >
               </div>
@@ -196,113 +141,122 @@
         </div>
       </section>
 
-      <!-- PRODUCTS PREVIEW -->
+      <!-- VIEW PRODUCTS -->
+      <?php
+      // Lấy danh mục
+      $cats = [];
+      $res = $conn->query("SELECT slug, name FROM categories ORDER BY id");
+      while ($row = $res->fetch_assoc()) { $cats[] = $row; }
+
+      // Lấy toàn bộ sản phẩm + slug
+      $sql = "SELECT p.id, p.name, p.price, p.old_price, p.image, p.shopee_url, c.slug
+              FROM products p
+              JOIN categories c ON c.id = p.category_id
+              WHERE p.status = 1
+              ORDER BY p.created_at DESC";
+      $products = $conn->query($sql)->fetch_all(MYSQLI_ASSOC);
+
+      // Filter ban đầu: ?cat=... ; nếu không có thì lấy slug của danh mục đầu tiên
+      $initialCat = isset($_GET['cat']) ? trim($_GET['cat']) : '';
+      if ($initialCat === '' && !empty($cats)) {
+        $initialCat = $cats[0]['slug'];
+      }
+      function vnd($n){ return number_format((float)$n, 0, '.', '.') . ' đ'; }
+      ?>
+
       <section class="py-5 mt-5" id="products">
         <div class="container">
           <!-- Header + Filter -->
-          <div
-            class="section-head d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4"
-          >
+          <div class="section-head d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4">
             <div class="head-left">
               <span class="eyebrow">Explore</span>
               <h2 class="title mb-1">OUR PRODUCTS</h2>
             </div>
 
-            <!-- Filter pills -->
+            <!-- Pills chỉ theo danh mục (không có All) -->
             <div class="filter-pills" role="group" aria-label="Filter products">
-              <button class="pill active" data-filter="*">
-                <i class="bi bi-grid me-1"></i> All products
-              </button>
-              <button class="pill" data-filter="rice">
-                <i class="bi bi-bag-check me-1"></i> Nutritional Noodles
-              </button>
-              <button class="pill" data-filter="paper">
-                <i class="bi bi-cup-straw me-1"></i> Rice straws
-              </button>
-              <button class="pill" data-filter="tableware">
-                <i class="bi bi-sliders2 me-1"></i> Stirring bar
-              </button>
+              <?php foreach ($cats as $c): ?>
+                <button type="button"
+                        class="pill<?= ($initialCat===$c['slug'] ? ' active' : '') ?>"
+                        data-filter="<?= htmlspecialchars($c['slug']) ?>">
+                  <?= htmlspecialchars($c['name']) ?>
+                </button>
+              <?php endforeach; ?>
             </div>
           </div>
-          <!-- list products here -->
+
+          <!-- Grid -->
           <div class="row g-4 product-grid mt-5">
             <div class="row products-row mt-5">
-              <!-- Rainbow Noodles -->
-              <div class="col-12 col-md-6 col-lg-4">
-                <div class="product-card">
-                  <figure class="product-figure">
-                    <img
-                      class="product-img"
-                      src="assets/images/products/mi-cau-vong-Thumbnail-web.png"
-                      alt="Rainbow Noodles"
-                    />
-                  </figure>
-                  <div class="card-body">
-                    <h5 class="product-title pt-2">Rainbow Noodles</h5>
-                    <div class="price-old">65.000 đ</div>
-                    <div class="price-new mb-2">45.000 đ</div>
-                    <a href="#" class="btn btn-pill">See now</a>
-                  </div>
-                </div>
-              </div>
+              <?php if (empty($products)): ?>
+                <div class="col-12"><div class="alert alert-light border text-center mb-0">No products found.</div></div>
+              <?php else: ?>
+                <?php foreach ($products as $p): ?>
+                  <div class="col-12 col-md-6 col-lg-4" data-cat="<?= htmlspecialchars($p['slug']) ?>">
+                    <div class="product-card">
+                      <figure class="product-figure">
+                        <img class="product-img" src="<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>">
+                      </figure>
+                      <div class="card-body">
+                        <h5 class="product-title pt-2"><?= htmlspecialchars($p['name']) ?></h5>
 
-              <!-- Corn Noodles -->
-              <div class="col-12 col-md-6 col-lg-4">
-                <div class="product-card">
-                  <figure class="product-figure">
-                    <img
-                      class="product-img"
-                      src="assets/images/products/Mi-cau-vong-Thumbnail-web.png"
-                      alt="Corn Noodles"
-                    />
-                  </figure>
-                  <div class="card-body">
-                    <h5 class="product-title">Corn Noodles</h5>
-                    <div class="price-old">65.000 đ</div>
-                    <div class="price-new mb-2">50.000 đ</div>
-                    <a href="#" class="btn btn-pill">See now</a>
-                  </div>
-                </div>
-              </div>
+                        <?php if (!is_null($p['old_price']) && $p['old_price'] > 0): ?>
+                          <div class="price-old"><?= vnd($p['old_price']) ?></div>
+                        <?php else: ?>
+                          <div class="price-old" style="visibility:hidden">.</div>
+                        <?php endif; ?>
 
-              <!-- Sugar Free Noodles -->
-              <div class="col-12 col-md-6 col-lg-4">
-                <div class="product-card">
-                  <figure class="product-figure">
-                    <img
-                      class="product-img"
-                      src="assets/images/products/Mi-ngo-Thumbnail-web.png"
-                      alt="Sugar Free Noodles"
-                    />
-                  </figure>
-                  <div class="card-body">
-                    <h5 class="product-title">Sugar Free Noodles</h5>
-                    <div class="price-old">80.000 đ</div>
-                    <div class="price-new mb-2">65.000 đ</div>
-                    <a href="#" class="btn btn-pill">See now</a>
+                        <div class="price-new mb-2"><?= vnd($p['price']) ?></div>
+
+                        <?php if (!empty($p['shopee_url'])): ?>
+                          <a href="<?= htmlspecialchars($p['shopee_url']) ?>" target="_blank" rel="noopener" class="btn btn-pill">See now</a>
+                        <?php else: ?>
+                          <button class="btn btn-pill" type="button" disabled>See now</button>
+                        <?php endif; ?>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                <?php endforeach; ?>
+              <?php endif; ?>
             </div>
           </div>
         </div>
-        <script>
-          document
-            .querySelectorAll("#products .filter-pills .pill")
-            .forEach((btn) => {
-              btn.addEventListener("click", function () {
-                // active UI
-                document
-                  .querySelectorAll("#products .filter-pills .pill")
-                  .forEach((b) => b.classList.remove("active"));
-                this.classList.add("active");
 
-                // nếu bạn đã có code lọc theo data-filter, gọi lại ở đây.
-                // Ví dụ: filterIsotope(this.dataset.filter);  (tùy bạn đang dùng gì)
-              });
+        <script>
+        (() => {
+          const pills = document.querySelectorAll('#products .filter-pills .pill');
+          const items = document.querySelectorAll('#products .products-row [data-cat]');
+          const sect  = document.getElementById('products');
+
+          function applyFilter(f) {
+            items.forEach(it => {
+              it.classList.toggle('d-none', it.dataset.cat !== f);
             });
+          }
+
+          // Filter ban đầu từ PHP (danh mục đầu tiên nếu không có ?cat=)
+          const initialFilter = <?= json_encode($initialCat) ?>;
+          applyFilter(initialFilter);
+
+          // Đồng bộ active
+          pills.forEach(b => b.classList.toggle('active', b.dataset.filter === initialFilter));
+
+          // Click: không điều hướng, chỉ lọc
+          pills.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              e.preventDefault();
+              pills.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              applyFilter(btn.dataset.filter);
+              sect.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              history.replaceState(null, '', '?cat=' + encodeURIComponent(btn.dataset.filter)); // cập nhật URL
+            }, { passive:false });
+          });
+        })();
         </script>
       </section>
+
+
 
       <!-- PROCESS -->
       <section class="process-section" id="process">
@@ -445,42 +399,43 @@
             <div class="col-lg-6">
               <div class="lead-panel p-4 p-md-5">
                 <h2 class="display-6 fw-bold mb-4">REGISTRATION FORM</h2>
+                <?php if (!empty($_SESSION['lead_ok'])): ?>
+                  <div class="alert alert-success border-0 shadow-sm mb-3">
+                    ✅ Your request has been sent. We will contact you soon!
+                  </div>
+                <?php unset($_SESSION['lead_ok']); ?>
+                <?php elseif (!empty($_SESSION['lead_error'])): ?>
+                  <div class="alert alert-danger border-0 shadow-sm mb-3">
+                    <?= htmlspecialchars($_SESSION['lead_error']) ?>
+                  </div>
+                  <?php unset($_SESSION['lead_error']); ?>
+                <?php endif; ?>
 
-                <form novalidate>
+                <form id="leadForm" class="needs-validation" action="lead-submit.php" method="post" novalidate>
+                  <!-- Honeypot chống bot: để trống/ẩn -->
+                  <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;opacity:0">
+
                   <div class="mb-3">
-                    <input
-                      class="form-control form-lg"
-                      type="text"
-                      placeholder="Full name"
-                    />
+                    <input class="form-control form-lg" type="text" name="full_name" placeholder="Full name" required />
+                    <div class="invalid-feedback">Please enter your name.</div>
                   </div>
+
                   <div class="mb-3">
-                    <input
-                      class="form-control form-lg"
-                      type="text"
-                      placeholder="Business"
-                    />
+                    <input class="form-control form-lg" type="text" name="business" placeholder="Business" />
                   </div>
+
                   <div class="mb-3">
-                    <input
-                      class="form-control form-lg"
-                      type="tel"
-                      placeholder="Phone number"
-                    />
+                    <input class="form-control form-lg" type="tel" name="phone" placeholder="Phone number" required />
+                    <div class="invalid-feedback">Please enter your phone number.</div>
                   </div>
+
                   <div class="mb-3">
-                    <input
-                      class="form-control form-lg"
-                      type="email"
-                      placeholder="Email"
-                    />
+                    <input class="form-control form-lg" type="email" name="email" placeholder="Email" required />
+                    <div class="invalid-feedback">Please enter a valid email.</div>
                   </div>
+
                   <div class="mb-4">
-                    <textarea
-                      class="form-control form-lg"
-                      rows="4"
-                      placeholder="Message"
-                    ></textarea>
+                    <textarea class="form-control form-lg" rows="4" name="message" placeholder="Message"></textarea>
                   </div>
 
                   <div class="lead-connector" aria-hidden="true"></div>
@@ -490,6 +445,19 @@
                     </button>
                   </div>
                 </form>
+                <script>
+                  (function () {
+                    const form = document.getElementById('leadForm');
+                    form.addEventListener('submit', function (e) {
+                      if (!form.checkValidity()) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                      }
+                      form.classList.add('was-validated');
+                    }, false);
+                  }());
+                </script>
+
               </div>
             </div>
 
@@ -637,101 +605,14 @@
       </section>
     </main>
     <!-- ===== FOOTER ===== -->
-    <footer class="eco-footer text-white">
-      <!-- Signup bar -->
-      <div class="container position-relative">
-        <div class="footer-callout ec-callout rounded-4">
-          <h3 class="h3 fw-bold text-uppercase text-center mb-3 mb-md-4">
-            Contact international and domestic business departments
-          </h3>
-
-          <!-- Ô trắng hiển thị hotline -->
-          <div class="hotline-pill">
-            <span class="label">Hotline / Whatsapp / Zalo</span>
-            <span class="number">+84913924933</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Body -->
-      <div class="eco-footer__body">
-        <div class="container">
-          <div class="row g-4">
-            <div class="col-lg-6">
-              <h6 class="fw-bold text-uppercase mb-2">
-                Eco Straws Vietnam Export Joint Stock Company
-              </h6>
-              <ul class="list-unstyled text-white-75 mb-0">
-                <li>
-                  <strong>Office:</strong> DBS Building, 4th floor, Lot 31, Ha
-                  Tri Service and Trade Area, Ha Cau Ward, Ha Dong, Hanoi,
-                  Vietnam.
-                </li>
-                <li>
-                  <strong>Factory address:</strong> Lot CN02, industrial
-                  cluster, Hai Phuong commune, Hai Hau district, Nam Dinh
-                  province.
-                </li>
-              </ul>
-
-              <div class="mt-3">
-                <span class="me-2">Follow us:</span>
-                <a
-                  class="eco-social"
-                  href="https://www.facebook.com/Ecostrawsvietnam"
-                  ><i class="bi bi-facebook"></i
-                ></a>
-                <a
-                  class="eco-social"
-                  href="https://www.youtube.com/@EcoStrawsVietNam2018"
-                  ><i class="bi bi-youtube"></i
-                ></a>
-                <a
-                  class="eco-social"
-                  href="https://www.tiktok.com/@ecostraws.official"
-                  ><i class="bi bi-tiktok"></i
-                ></a>
-                <a
-                  class="eco-social"
-                  href="https://www.instagram.com/ecostrawsviet/"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-              </div>
-            </div>
-
-            <div class="col-sm-6 col-lg-3">
-              <h6 class="fw-bold text-uppercase mb-2">Contact</h6>
-              <ul class="list-unstyled text-white-75 mb-0">
-                <li class="mb-1">
-                  <i class="bi bi-telephone me-2"></i> +84913924933
-                </li>
-                <li>
-                  <i class="bi bi-envelope me-2"></i> info@ecostrawsvietnam.vn
-                </li>
-              </ul>
-            </div>
-
-            <div class="col-sm-6 col-lg-3">
-              <h6 class="fw-bold text-uppercase mb-2">About Eco Straws</h6>
-              <ul class="list-unstyled mb-0">
-                <a href="about.html" class="text-white text-decoration-none"
-                  ><li>Who are we</li></a
-                >
-                <a href="about.html" class="text-white text-decoration-none"
-                  ><li>Office and Factory</li></a
-                >
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <?php include "includes/flash.php" ?>
+    <?php include "includes/footer.php" ?>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       defer
     ></script>
-    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/main.js?v=<?= time(); ?>"></script>
   </body>
 </html>

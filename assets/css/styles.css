@@ -1131,18 +1131,46 @@ footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 40px; /* to hơn */
+  height: 40px; /* to hơn */
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.14);
+  margin-right: 0.6rem;
+  font-size: 1.2rem; /* icon lớn hơn */
   color: #fff;
-  margin-right: 0.35rem;
-  font-size: 0.9rem;
-  transition: background 0.15s ease, transform 0.15s ease;
+  transition: transform 0.15s ease, filter 0.15s ease;
 }
 .eco-social:hover {
   background: rgba(255, 255, 255, 0.25);
   transform: translateY(-1px);
+}
+/* màu riêng từng mạng xã hội */
+.eco-social--facebook {
+  background: #1877f2;
+}
+
+.eco-social--youtube {
+  background: #ff0000;
+}
+
+.eco-social--tiktok {
+  background: #000000;
+}
+
+.eco-social--whatsapp {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    /* vàng */ #fdf497 5%,
+    #fd5949 45%,
+    /* cam–đỏ */ #d6249f 60%,
+    /* hồng tím */ #285aeb 90% /* xanh tím */
+  );
+}
+
+/* hover nhẹ */
+.eco-social:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
 }
 
 /* pill trắng trong khối xanh */
@@ -1300,4 +1328,22 @@ footer {
 
 padding-hero {
   margin-top: 200px;
+}
+
+/* Nút user trên navbar */
+.nav-user-btn {
+  font-size: 1.55rem; /* kích thước icon */
+  color: #198754; /* xanh eco */
+  line-height: 1;
+}
+.nav-user-btn:hover {
+  color: #157347;
+}
+
+.btn-success-form {
+  background: #7bc043;
+  color: #fff;
+  border: 0;
+  border-radius: 0.7rem;
+  box-shadow: 0 8px 18px rgba(123, 192, 67, 0.25);
 }
