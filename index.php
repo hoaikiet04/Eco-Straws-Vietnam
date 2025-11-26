@@ -98,7 +98,7 @@ if (session_status() === PHP_SESSION_NONE) {
       </section>
 
       <!-- FEATURES -->
-      <section class="features py-5 bg-light my-5">
+      <section class="features py-5 bg-light my-5 reveal-on-scroll">
         <div class="container">
           <div class="row text-center g-4">
             <div class="col-6 col-lg-3">
@@ -139,32 +139,50 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
           </div>
         </div>
+        <script>
+          (function () {
+            const els = document.querySelectorAll('.reveal-on-scroll');
+            if (!('IntersectionObserver' in window) || !els.length) return;
+
+            const obs = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+                  obs.unobserve(entry.target);
+                }
+              });
+            }, {
+              threshold: 0.2
+            });
+
+            els.forEach(el => obs.observe(el));
+          })();
+        </script>
       </section>
 
       <!-- VIEW PRODUCTS -->
-      <?php
-      // Lấy danh mục
-      $cats = [];
-      $res = $conn->query("SELECT slug, name FROM categories ORDER BY id");
-      while ($row = $res->fetch_assoc()) { $cats[] = $row; }
-
-      // Lấy toàn bộ sản phẩm + slug
-      $sql = "SELECT p.id, p.name, p.price, p.old_price, p.image, p.shopee_url, c.slug
-              FROM products p
-              JOIN categories c ON c.id = p.category_id
-              WHERE p.status = 1
-              ORDER BY p.created_at DESC";
-      $products = $conn->query($sql)->fetch_all(MYSQLI_ASSOC);
-
-      // Filter ban đầu: ?cat=... ; nếu không có thì lấy slug của danh mục đầu tiên
-      $initialCat = isset($_GET['cat']) ? trim($_GET['cat']) : '';
-      if ($initialCat === '' && !empty($cats)) {
-        $initialCat = $cats[0]['slug'];
-      }
-      function vnd($n){ return number_format((float)$n, 0, '.', '.') . ' đ'; }
-      ?>
-
       <section class="py-5 mt-5" id="products">
+        <?php
+        // Lấy danh mục
+        $cats = [];
+        $res = $conn->query("SELECT slug, name FROM categories ORDER BY id");
+        while ($row = $res->fetch_assoc()) { $cats[] = $row; }
+
+        // Lấy toàn bộ sản phẩm + slug
+        $sql = "SELECT p.id, p.name, p.price, p.old_price, p.image, p.shopee_url, c.slug
+                FROM products p
+                JOIN categories c ON c.id = p.category_id
+                WHERE p.status = 1
+                ORDER BY p.created_at DESC";
+        $products = $conn->query($sql)->fetch_all(MYSQLI_ASSOC);
+
+        // Filter ban đầu: ?cat=... ; nếu không có thì lấy slug của danh mục đầu tiên
+        $initialCat = isset($_GET['cat']) ? trim($_GET['cat']) : '';
+        if ($initialCat === '' && !empty($cats)) {
+          $initialCat = $cats[0]['slug'];
+        }
+        function cad($n){ return 'C$' . number_format((float)$n, 2, '.', ',');  }
+        ?>
         <div class="container">
           <!-- Header + Filter -->
           <div class="section-head d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4">
@@ -187,7 +205,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
           <!-- Grid -->
           <div class="row g-4 product-grid mt-5">
-            <div class="row products-row mt-5">
+            <div class="row products-row mt-5 justify-content-center">
               <?php if (empty($products)): ?>
                 <div class="col-12"><div class="alert alert-light border text-center mb-0">No products found.</div></div>
               <?php else: ?>
@@ -201,12 +219,12 @@ if (session_status() === PHP_SESSION_NONE) {
                         <h5 class="product-title pt-2"><?= htmlspecialchars($p['name']) ?></h5>
 
                         <?php if (!is_null($p['old_price']) && $p['old_price'] > 0): ?>
-                          <div class="price-old"><?= vnd($p['old_price']) ?></div>
+                          <div class="price-old"><?= cad($p['old_price']) ?></div>
                         <?php else: ?>
                           <div class="price-old" style="visibility:hidden">.</div>
                         <?php endif; ?>
 
-                        <div class="price-new mb-2"><?= vnd($p['price']) ?></div>
+                        <div class="price-new mb-2"><?= cad($p['price']) ?></div>
 
                         <?php if (!empty($p['shopee_url'])): ?>
                           <a href="<?= htmlspecialchars($p['shopee_url']) ?>" target="_blank" rel="noopener" class="btn btn-pill">See now</a>
@@ -256,12 +274,10 @@ if (session_status() === PHP_SESSION_NONE) {
         </script>
       </section>
 
-
-
       <!-- PROCESS -->
       <section class="process-section" id="process">
         <div class="container">
-          <h2 class="title text-center mt-3">PRODUCTION PROCESS</h2>
+          <h2 class="title fw-bold text-center mt-3">PRODUCTION PROCESS</h2>
           <p class="text-center pb-3">Rice straw production process</p>
 
           <div class="timeline">
@@ -361,7 +377,7 @@ if (session_status() === PHP_SESSION_NONE) {
       <!-- CERTIFICATIONS -->
       <section class="py-5 my-5 bg-light">
         <div class="container">
-          <h2 class="title mb-4 text-center">
+          <h2 class="title fw-bold mb-4 text-center">
             CERTIFICATIONS & INSPECTION PARTNERS
           </h2>
 

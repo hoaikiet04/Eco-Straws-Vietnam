@@ -28,6 +28,43 @@
         class="hero position-relative overflow-hidden"
         style="min-height: 85vh"
       >
+      <?php
+        // Kết nối đã có: include "includes/connect.php"
+        $conn->set_charset('utf8mb4');
+
+        /* Lấy danh mục để hiển thị filter + kiểm tra hợp lệ slug */
+        $cats = [];                 // ['noodles' => ['id'=>..,'slug'=>..,'name'=>..], ...]
+        $res  = $conn->query("SELECT id, slug, name FROM categories ORDER BY id");
+        while ($row = $res->fetch_assoc()) {
+          $cats[$row['slug']] = $row;
+        }
+
+        /* Slug đang chọn (?cat=...). '*' = tất cả */
+        $cat = isset($_GET['cat']) && $_GET['cat'] !== '' ? trim($_GET['cat']) : '*';
+
+        /* Lấy sản phẩm (có slug danh mục). Nếu $cat hợp lệ và khác '*', lọc theo slug */
+        $sql = "SELECT p.id, p.name, p.price, p.old_price, p.image, p.shopee_url, c.slug
+                FROM products p
+                JOIN categories c ON c.id = p.category_id
+                WHERE p.status = 1";
+        $params = []; $types = '';
+
+        if ($cat !== '*' && isset($cats[$cat])) {
+          $sql .= " AND c.slug = ? ";
+          $params[] = $cat; $types .= 's';
+        }
+        $sql .= " ORDER BY p.created_at DESC";
+
+        $stmt = $conn->prepare($sql);
+        if (!empty($params)) $stmt->bind_param($types, ...$params);
+        $stmt->execute();
+        $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+
+        /* Helper định dạng tiền (nếu cần) */
+        function price_cad($n) { return 'C$' . number_format((float)$n, 2); }
+        ?>
+
         <div class="container position-relative py-5">
           <div class="row align-items-center">
             <div class="col-lg-6">
@@ -105,27 +142,17 @@
                   <strong class="fs-5">Filter</strong>
                 </div>
                 <ul class="filter-list list-unstyled m-0">
-                  <li>
-                    <button class="filter-link active" data-filter="*">
-                      All products
-                    </button>
-                  </li>
-                  <li>
-                    <button class="filter-link" data-filter="noodles">
-                      Nutritional noodles
-                    </button>
-                  </li>
-                  <li>
-                    <button class="filter-link" data-filter="rice">
-                      Rice straws
-                    </button>
-                  </li>
-                  <li>
-                    <button class="filter-link" data-filter="stirring">
-                      Stirring bar
-                    </button>
-                  </li>
+                  <li><button class="filter-link<?= ($cat==='*'?' active':'') ?>" data-filter="*">All products</button></li>
+                  <?php foreach ($cats as $slug => $row): ?>
+                    <li>
+                      <button class="filter-link<?= ($cat===$slug?' active':'') ?>"
+                              data-filter="<?= htmlspecialchars($slug) ?>">
+                        <?= htmlspecialchars($row['name']) ?>
+                      </button>
+                    </li>
+                  <?php endforeach; ?>
                 </ul>
+
               </div>
             </aside>
 
@@ -133,126 +160,95 @@
             <div class="col-lg-9">
               <!-- Green heading bar -->
               <div class="category-bar mb-4">
-                <span id="categoryTitle">NUTRITIONAL NOODLES</span>
+                <span id="categoryTitle">
+                  <?= $cat === '*' ? 'ALL PRODUCTS'
+                                  : (isset($cats[$cat]) ? strtoupper($cats[$cat]['name']) : 'ALL PRODUCTS') ?>
+                </span>
               </div>
 
               <!-- Product grid (reuse your product-card) -->
-              <div class="row g-4 products-row" id="productGrid">
-                <!-- Sugar Free Noodles -->
-                <div
-                  class="col-12 col-md-6 col-xl-4 product-col"
-                  data-category="noodles"
-                >
-                  <div class="product-card">
-                    <figure class="product-figure">
-                      <img
-                        class="product-img"
-                        src="assets/images/products/Mi-ngo-Thumbnail-web.png"
-                        alt="Sugar Free Noodles"
-                      />
-                    </figure>
-                    <div class="card-body">
-                      <h5 class="product-title">Sugar Free Noodles</h5>
-                      <div class="price-old">80.000 đ</div>
-                      <div class="price-new mb-2">65.000 đ</div>
-                      <a href="#" class="btn btn-pill">See now</a>
-                    </div>
-                  </div>
-                </div>
+              <div class="row g-4 gy-5 products-row" id="productGrid">
+              <?php if (empty($products)): ?>
+                <div class="col-12"><div class="alert alert-light border text-center">No products found.</div></div>
+              <?php else: ?>
+                <?php foreach ($products as $p): ?>
+                  <div class="col-12 col-md-6 col-xl-4 product-col" data-category="<?= htmlspecialchars($p['slug']) ?>">
+                    <div class="product-card">
+                      <figure class="product-figure">
+                        <img class="product-img" src="<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>">
+                      </figure>
+                      <div class="card-body text-center">
+                        <h5 class="product-title"><?= htmlspecialchars($p['name']) ?></h5>
 
-                <!-- Corn Noodles -->
-                <div
-                  class="col-12 col-md-6 col-xl-4 product-col"
-                  data-category="noodles"
-                >
-                  <div class="product-card">
-                    <figure class="product-figure">
-                      <img
-                        class="product-img"
-                        src="assets/images/products/Mi-cau-vong-Thumbnail-web.png"
-                        alt="Corn Noodles"
-                      />
-                    </figure>
-                    <div class="card-body">
-                      <h5 class="product-title">Corn Noodles</h5>
-                      <div class="price-old">65.000 đ</div>
-                      <div class="price-new mb-2">50.000 đ</div>
-                      <a href="#" class="btn btn-pill">See now</a>
-                    </div>
-                  </div>
-                </div>
+                        <?php if (!is_null($p['old_price']) && $p['old_price'] > 0): ?>
+                          <div class="price-old"><?= price_cad($p['old_price']) ?></div>
+                        <?php else: ?>
+                          <div class="price-old" style="visibility:hidden">.</div>
+                        <?php endif; ?>
 
-                <!-- Rainbow Noodles -->
-                <div
-                  class="col-12 col-md-6 col-xl-4 product-col"
-                  data-category="noodles"
-                >
-                  <div class="product-card">
-                    <figure class="product-figure">
-                      <img
-                        class="product-img"
-                        src="assets/images/products/mi-cau-vong-Thumbnail-web.png"
-                        alt="Rainbow Noodles"
-                      />
-                    </figure>
-                    <div class="card-body">
-                      <h5 class="product-title">Rainbow Noodles</h5>
-                      <div class="price-old">65.000 đ</div>
-                      <div class="price-new mb-2">45.000 đ</div>
-                      <a href="#" class="btn btn-pill">See now</a>
-                    </div>
-                  </div>
-                </div>
+                        <div class="price-new mb-2"><?= price_cad($p['price']) ?></div>
 
-                <!-- Ví dụ các danh mục khác -->
-                <!-- Rice straws -->
-                <div
-                  class="col-12 col-md-6 col-xl-4 product-col d-none"
-                  data-category="rice"
-                >
-                  <div class="product-card">
-                    <figure class="product-figure">
-                      <img
-                        class="product-img"
-                        src="assets/images/products/straw-rice.png"
-                        alt="Rice Straws"
-                      />
-                    </figure>
-                    <div class="card-body">
-                      <h5 class="product-title">Rice Straws</h5>
-                      <div class="price-old">—</div>
-                      <div class="price-new mb-2">Liên hệ</div>
-                      <a href="#" class="btn btn-pill">See now</a>
+                        <?php if (!empty($p['shopee_url'])): ?>
+                          <a href="<?= htmlspecialchars($p['shopee_url']) ?>" target="_blank" rel="noopener" class="btn btn-pill">See now</a>
+                        <?php else: ?>
+                          <button class="btn btn-pill" disabled>See now</button>
+                        <?php endif; ?>
+                      </div>
                     </div>
                   </div>
-                </div>
+                <?php endforeach; ?>
+              <?php endif; ?>
 
-                <!-- Stirring bar -->
-                <div
-                  class="col-12 col-md-6 col-xl-4 product-col d-none"
-                  data-category="stirring"
-                >
-                  <div class="product-card">
-                    <figure class="product-figure">
-                      <img
-                        class="product-img"
-                        src="assets/images/products/stir-bar.png"
-                        alt="Stirring Bar"
-                      />
-                    </figure>
-                    <div class="card-body">
-                      <h5 class="product-title">Stirring Bar</h5>
-                      <div class="price-old">—</div>
-                      <div class="price-new mb-2">Liên hệ</div>
-                      <a href="#" class="btn btn-pill">See now</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </div>    
             </div>
           </div>
         </div>
       </section>
+      <script>
+        const TITLE = {
+          '*': 'ALL PRODUCTS',
+          <?php foreach ($cats as $slug=>$row): ?>
+            '<?= $slug ?>': '<?= strtoupper($row["name"]) ?>',
+          <?php endforeach; ?>
+        };
+
+        (() => {
+          const titleEl = document.getElementById('categoryTitle');
+          const gridRow = document.getElementById('productGrid');
+          const buttons = document.querySelectorAll('.filter-link');
+          const cards   = document.querySelectorAll('#productGrid .product-col');
+
+          // lấy trực tiếp từ server (đã qua alias nếu có)
+          let current = <?= json_encode($cat) ?>;
+          if (!TITLE[current]) current = '*';
+
+          function apply(cat){
+            buttons.forEach(b => b.classList.toggle('active', b.dataset.filter===cat));
+            let shown = 0;
+            cards.forEach(c => {
+              const show = (cat==='*' || c.dataset.category===cat);
+              c.classList.toggle('d-none', !show);
+              if (show) shown++;
+            });
+            titleEl.textContent = TITLE[cat] || TITLE['*'];
+            gridRow.classList.toggle('justify-content-center', shown < 3);
+
+            const url = new URL(window.location.href);
+            if (cat==='*') url.searchParams.delete('cat'); else url.searchParams.set('cat', cat);
+            history.replaceState(null, '', url);
+          }
+
+          apply(current);
+          buttons.forEach(btn=>{
+            btn.addEventListener('click', e=>{
+              e.preventDefault();
+              apply(btn.dataset.filter || '*');
+            }, {passive:false});
+          });
+        })();
+      </script>
+
+
     </main>
     <!-- ===== FOOTER ===== -->
     <?php include "includes/footer.php" ?>

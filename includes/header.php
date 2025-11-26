@@ -112,4 +112,19 @@
         }
       })();
     </script>
+    <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      // gỡ trạng thái modal/offcanvas mở sẵn (nếu có)
+      document.body.classList.remove('modal-open', 'offcanvas-open');
+      document.querySelectorAll('.modal.show, .offcanvas.show').forEach(el => {
+        el.classList.remove('show');
+        el.style.removeProperty('display');
+      });
+      // xoá mọi backdrop đang tồn tại
+      document.querySelectorAll('.modal-backdrop, .offcanvas-backdrop').forEach(el => el.remove());
+      // khôi phục scroll nếu bị khoá
+      document.body.style.removeProperty('overflow');
+    });
+    </script>
+
 

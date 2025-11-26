@@ -27,7 +27,7 @@
       <section
         class="hero position-relative overflow-hidden"
         style="min-height: 85vh"
-      >
+        >
         <div class="container position-relative py-5">
           <div class="row align-items-center">
             <div class="col-lg-6">
@@ -94,35 +94,36 @@
         </svg>
       </section>
 
-      <section class="py-5" id="about">
+      <!-- ABOUT -->
+      <section class="py-5 reveal-on-scroll" id="about">
         <div class="container">
           <h2
             class="h2 fw-bold text-success text-center mb-4"
-            style="font-family: 'Segoe Script', cursive"
+            
           >
-            Who are we
+            Who we are
           </h2>
 
           <!-- Card with concave circle + image -->
           <div class="about-card p-4 p-md-5 mb-4">
             <div class="row align-items-center">
               <div class="col-lg-7">
-                <h3 class="h4 fw-bold mb-3">About Us</h3>
+                <h3 class="h4 fw-bold mb-3">Our Story</h3>
                 <p class="text-secondary mb-3">
-                  Eco Straws Vietnam Export Joint Stock Company was established
-                  in 2018 with the aim of producing and distributing products
-                  that are environmentally friendly and safe to consume.
+                  Eco Straws Vietnam Export JSC was born in 2018 from a simple
+                  question: <strong>“Can we enjoy convenience without harming the planet?”</strong>
                 </p>
                 <p class="text-secondary mb-3">
-                  Eco Straws’ product ecosystem is made from 100% native natural
-                  ingredients that are grown and controlled to meet
-                  international standards.
+                  From that question, we built a product ecosystem made from
+                  100% locally sourced natural ingredients. Every crop is grown and
+                  controlled to meet international standards, turning Vietnamese
+                  agricultural strengths into sustainable, high–value products.
                 </p>
                 <p class="text-secondary mb-0">
-                  With gratitude for nature and love for people, marine life,
-                  and the environment, we are continuously expanding our
-                  production lines: From ecological straws, and coffee stirrers
-                  to healthy noodles, and there will soon be more.
+                  With gratitude for nature and care for people, marine life and the
+                  environment, we keep expanding our lines &mdash; from eco straws and
+                  coffee stirrers to healthy noodles, and new green products that are
+                  already on the way.
                 </p>
               </div>
 
@@ -132,7 +133,7 @@
                   <img
                     src="assets/images/banner_4.jpg"
                     class="img-fluid"
-                    alt="Factory"
+                    alt="Eco Straws Vietnam factory"
                   />
                 </div>
               </div>
@@ -144,18 +145,17 @@
             <div class="col-md-6">
               <div class="about-badge text-center">
                 <div class="fw-bold text-white">ECO STRAWS VIETNAM</div>
-                <small class="text-white-50"
-                  >a brand for the Vietnamese and Asian markets</small
-                >
+                <small class="text-white-50">
+                  A brand created for the Vietnamese and Asian markets
+                </small>
               </div>
             </div>
             <div class="col-md-6">
               <div class="about-badge text-center">
                 <div class="fw-bold text-white">ECO-CEREAL BRAND</div>
-                <small class="text-white-50"
-                  >a brand registered for intellectual property rights in the US
-                  and EU</small
-                >
+                <small class="text-white-50">
+                  Registered for intellectual property protection in the US and EU
+                </small>
               </div>
             </div>
           </div>
@@ -163,82 +163,97 @@
       </section>
 
       <!-- HISTORY / TIMELINE -->
-      <section id="history" class="py-5">
+      <section id="history" class="py-5 reveal-on-scroll">
         <div class="container">
           <h2
-            class="h2 text-success text-center fw-bold mb-5"
-            style="font-family: 'Segoe Script', cursive"
+            class="h2 text-success text-center fw-bold mb-3"
+
           >
-            History of Eco Straws
+            HOW OUR JOURNEY BEGAN
           </h2>
+          <p class="text-secondary text-center mx-auto mb-5" style="max-width: 640px;">
+            From a small team and a single production line to an international
+            export factory, Eco Straws Vietnam has always followed one direction:
+            <strong>greener materials, cleaner processes, better lives.</strong>
+          </p>
 
           <div class="timeline position-relative">
-            <!-- 2018 (trái) -->
+            <!-- 2018 -->
             <div class="timeline-item row align-items-center g-4">
               <div class="col-md-6 order-md-1">
                 <div class="d-flex align-items-start gap-3">
                   <span class="year-badge">2018</span>
-                  <p class="text-secondary mb-0">
-                    Initial research into production processes, machinery design
-                    and the construction of a factory to meet international
-                    standards.
-                  </p>
+                  <div>
+                    <h5 class="fw-semibold mb-1">Where the idea took root</h5>
+                    <p class="text-secondary mb-0">
+                      We began researching eco–friendly materials, designing
+                      production lines and planning a factory that could meet
+                      strict international standards from day one.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div class="col-md-6 order-md-2">
-                <figure class="timeline-figure tr-bl">
+                <figure class="tr-bl">
                   <img
-                    src="assets/images/banner_4.jpg"
+                    src="assets/images/grid/Rectangle-43.png"
                     class="img-fluid"
-                    alt="2018"
+                    alt="Early factory planning in 2018"
                   />
                 </figure>
               </div>
             </div>
 
-            <!-- 2019 (phải) -->
+            <!-- 2019 -->
             <div class="timeline-item row align-items-center g-4">
               <div class="col-md-6 order-md-2">
                 <div class="d-flex justify-content-md-end">
                   <div class="d-flex align-items-start gap-3 text-md-end">
-                    <p class="text-secondary mb-0">
-                      • Completing research and getting the high-tech factory up
-                      and running.
-                    </p>
+                    <div>
+                      <h5 class="fw-semibold mb-1">From blueprint to factory</h5>
+                      <p class="text-secondary mb-0">
+                        Our high-tech factory went into operation. We completed pilot
+                        batches, refined our formulas and officially launched Eco
+                        Straws products to the market.
+                      </p>
+                    </div>
                     <span class="year-badge">2019</span>
                   </div>
                 </div>
               </div>
               <div class="col-md-6 order-md-1">
-                <figure class="timeline-figure tl-br">
+                <figure class="tl-br">
                   <img
-                    src="assets/images/banner_2.jpg"
+                    src="assets/images/grid/Rectangle-44.png"
                     class="img-fluid"
-                    alt="2019"
+                    alt="High-tech factory 2019"
                   />
                 </figure>
               </div>
             </div>
 
-            <!-- 2020 (trái) -->
+            <!-- 2020 -->
             <div class="timeline-item row align-items-center g-4">
               <div class="col-md-6 order-md-1">
                 <div class="d-flex align-items-start gap-3">
                   <span class="year-badge">2020</span>
-                  <p class="text-secondary mb-0">
-                    Expanding the factory (>3,000 m²) for domestic and export
-                    goods.<br />
-                    Applying heat-pump drying technology & a large solar power
-                    system.
-                  </p>
+                  <div>
+                    <h5 class="fw-semibold mb-1">Scaling for impact</h5>
+                    <p class="text-secondary mb-0">
+                      We expanded our factory area to over 3,000 m² and invested in
+                      heat-pump drying technology and a large solar power system,
+                      allowing us to serve both domestic and export markets more
+                      sustainably.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div class="col-md-6 order-md-2">
-                <figure class="timeline-figure tr-bl">
+                <figure class="tr-bl">
                   <img
-                    src="assets/images/banner_1.jpg"
+                    src="assets/images/grid/Rectangle-45.png"
                     class="img-fluid"
-                    alt="2020"
+                    alt="Factory expansion in 2020"
                   />
                 </figure>
               </div>
@@ -250,45 +265,146 @@
         </div>
       </section>
 
+      <!-- MARKETS -->
+      <section id="markets" class="py-5 reveal-on-scroll">
+        <div class="container">
+
+          <!-- Domestic market -->
+          <div class="text-center mb-4">
+            <span class="market-pill">DOMESTIC MARKET</span>
+          </div>
+
+          <div class="row justify-content-center mb-4">
+            <div class="col-lg-8 text-center">
+              <!-- Bản đồ Việt Nam -->
+              <img
+                src="assets/images/map_vietnam.png"
+                alt="Domestic market in Vietnam"
+                class="img-fluid mb-3 market-map"
+              />
+            </div>
+          </div>
+
+          <!-- Logo khách hàng trong nước -->
+                <!-- CERTIFICATIONS -->
+      <section class="py-5 my-5 bg-light reveal-on-scroll">
+        <div class="container">
+          <div class="marquee marquee--3 mx-auto">
+            <div class="marquee__track">
+              <img src="assets/images/certs/jw-marriott.png" alt="ISO 22000:2018" />
+              <img src="assets/images/certs/brand-center.png" alt="FSPCA" />
+              <img src="assets/images/certs/hilton.png" alt="Eurofins" />
+
+              <img
+                src="assets/images/certs/jw-marriott.png"
+                alt=""
+                aria-hidden="true"
+              />
+              <img
+                src="assets/images/certs/brand_center.png"
+                alt=""
+                aria-hidden="true"
+              />
+              <img
+                src="assets/images/certs/hilton.png"
+                alt=""
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+          <!-- Foreign markets + globe -->
+          <div class="row align-items-center justify-content-center g-4 mb-4">
+            <!-- LEFT -->
+            <div class="col-6 col-md-3">
+              <div class="market-country-card text-center mb-3">
+                <img src="assets/images/certs/icon7.png" alt="Switzerland" class="img-fluid">
+                <span class="market-country-name d-block mt-2">SWITZERLAND</span>
+              </div>
+              <div class="market-country-card text-center mb-3">
+                <img src="assets/images/certs/icon8.png" alt="USA" class="img-fluid">
+                <span class="market-country-name d-block mt-2">USA</span>
+              </div>
+            </div>
+
+            <!-- Globe center -->
+            <div class="col-10 col-md-4 text-center">
+              <div class="market-globe-wrapper">
+                <img
+                  src="assets/images/markets_globe.png"
+                  alt="Global markets"
+                  class="img-fluid market-globe"
+                />
+              </div>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="col-6 col-md-3">
+              <div class="market-country-card text-center mb-3">
+                <img src="assets/images/certs/icon9.png" alt="Japan" class="img-fluid">
+                <span class="market-country-name d-block mt-2">JAPAN</span>
+              </div>
+              <div class="market-country-card text-center mb-3">
+                <img src="assets/images/certs/icon10.png" alt="france" class="img-fluid">
+                <span class="market-country-name d-block mt-2">FRANCE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Foreign markets label -->
+          <div class="text-center market-pill-secondary">
+            <span class="market-pill">FOREIGN MARKETS</span>
+          </div>
+
+        </div>
+      </section>
+
       <!-- VISION / MISSION / CORE VALUES -->
-      <section class="py-5" id="vmv">
+      <section class="py-5 reveal-on-scroll" id="vmv">
         <div class="container">
           <!-- Vision -->
           <div class="text-center mb-5">
             <div class="vmv-icon mb-2"><i class="bi bi-eye"></i></div>
-            <h2 class="vmv-script text-success mb-2">Vision</h2>
+            <h2 class="vmv-script text-success mb-2">VISION</h2>
             <p class="text-secondary mx-auto vmv-max">
-              To become a leading company in Southeast Asia in the production
-              and development of environmentally friendly products.
+              To become a leading company in Southeast Asia for
+              <strong>eco-friendly, plant-based products</strong>, where every straw,
+              noodle or stirrer carries a story of care for people and the planet.
             </p>
           </div>
 
           <!-- Mission -->
           <div class="text-center mb-5">
             <div class="vmv-icon mb-2"><i class="bi bi-bullseye"></i></div>
-            <h2 class="vmv-script text-success mb-2">Mission</h2>
+            <h2 class="vmv-script text-success mb-2">MISSION</h2>
             <p class="text-secondary mx-auto vmv-max">
-              Our goal is the development of environmentally friendly products
-              that enhance the value of Vietnamese agricultural products in the
-              international market, creating employment opportunities for
-              farmers and increasing Vietnam’s foreign exchange earnings.
+              We transform Vietnamese agricultural resources into sustainable
+              products that create fair jobs for farmers, bring healthy choices to
+              consumers and generate more green value for the global market.
             </p>
           </div>
 
           <!-- Core Values -->
           <div class="text-center mb-4">
             <div class="vmv-icon mb-2"><i class="bi bi-stars"></i></div>
-            <h2 class="vmv-script text-success mb-0">Core Values</h2>
+            <h2 class="vmv-script text-success mb-0">CORE VALUES</h2>
+            <p class="text-secondary mx-auto vmv-max mt-2">
+              Six “green pillars” that guide every decision we make.
+            </p>
           </div>
 
           <div class="row g-4 g-lg-5 mt-1">
             <!-- 1 -->
             <div class="col-12 col-md-4">
               <div class="value-card text-center h-100">
-                <div class="value-ico"><i class="bi bi-leaf"></i></div>
+                <div class="value-ico">
+                  <i class="bi bi-flower3"></i>
+                </div>
                 <h5 class="fw-bold text-uppercase mb-1">Green Ingredients</h5>
                 <p class="mb-0">
-                  100% natural ingredients from Vietnam’s fertile lands.
+                  100% natural, plant-based ingredients grown on Vietnam’s fertile lands.
                 </p>
               </div>
             </div>
@@ -300,8 +416,8 @@
                 </div>
                 <h5 class="fw-bold text-uppercase mb-1">Green Manufacturing</h5>
                 <p class="text-secondary mb-0">
-                  Processes designed to meet international standards; solar
-                  energy to reduce carbon emissions.
+                  International-standard processes, modern technology and solar energy
+                  to keep our footprint light.
                 </p>
               </div>
             </div>
@@ -311,7 +427,8 @@
                 <div class="value-ico"><i class="bi bi-people"></i></div>
                 <h5 class="fw-bold text-uppercase mb-1">Green Distribution</h5>
                 <p class="text-secondary mb-0">
-                  Partnerships with environmentally responsible businesses.
+                  Partnerships with businesses that share the same commitment to
+                  sustainability.
                 </p>
               </div>
             </div>
@@ -322,7 +439,7 @@
                 <div class="value-ico"><i class="bi bi-bag-check"></i></div>
                 <h5 class="fw-bold text-uppercase mb-1">Green Consumption</h5>
                 <p class="text-secondary mb-0">
-                  Safe, natural products for everyday use.
+                  Products that are safe, natural and easy to integrate into daily life.
                 </p>
               </div>
             </div>
@@ -332,7 +449,7 @@
                 <div class="value-ico"><i class="bi bi-heart"></i></div>
                 <h5 class="fw-bold text-uppercase mb-1">Green Living</h5>
                 <p class="text-secondary mb-0">
-                  Promote sustainable lifestyles with eco-friendly products.
+                  Encourage everyday choices that protect health and reduce waste.
                 </p>
               </div>
             </div>
@@ -342,17 +459,37 @@
                 <div class="value-ico"><i class="bi bi-globe2"></i></div>
                 <h5 class="fw-bold text-uppercase mb-1">Green Community</h5>
                 <p class="text-secondary mb-0">
-                  Contribute to a cleaner planet and better communities.
+                  Join hands with partners and consumers to build a cleaner planet
+                  and better communities.
                 </p>
               </div>
             </div>
           </div>
         </div>
       </section>
+
     </main>
     <!-- ===== FOOTER ===== -->
     <?php include "includes/footer.php" ?>
+    <script>
+      (function () {
+        const els = document.querySelectorAll('.reveal-on-scroll');
+        if (!('IntersectionObserver' in window) || !els.length) return;
 
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.2
+        });
+
+        els.forEach(el => obs.observe(el));
+      })();
+    </script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
